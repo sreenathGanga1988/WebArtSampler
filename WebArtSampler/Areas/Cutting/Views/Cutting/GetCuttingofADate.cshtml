@@ -1,0 +1,192 @@
+﻿@model WebArtSampler .Areas.Cutting.Models.DailyCuttingViewModel
+@{
+    ViewBag.Title = "GetCuttingofADate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Get Cutting of A Date</h2>
+
+<div class="form-horizontal">
+
+    <div class="row">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+    
+            <div class="col-sm-12">
+
+
+                <div class="form-group">
+                    @Html.Label("Cutting on ", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+
+
+
+                        @Html.EditorFor(model => model.DateofAction, new { htmlAttributes = new { @class = "datepicker form-control" } })
+
+
+
+                    </div>
+                </div>
+
+                
+
+                
+
+
+
+
+
+
+            </div>
+
+            
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="Show" value="Show" class="btn btn-default" />
+                </div>
+            </div>
+
+
+
+
+
+        }
+
+        <div class="col-sm-12">
+
+
+
+
+
+            <table class="table table-striped table-bordered table-hover table-responsive">
+                <tr>
+                    <th>
+                       @Html.DisplayName("ReqNum");
+                    </th>
+                    <th>
+                        @Html.DisplayName("Atc/Ref");
+
+                    </th>
+                    <th>
+                        @Html.DisplayName("SampleType");
+
+                    </th>
+                    <th>
+                        @Html.DisplayName("StyleName");
+                       
+                    </th>
+                    <th>
+                        @Html.DisplayName("BuyerName");
+                       
+                    </th>
+                    <th>
+                        @Html.DisplayName("Fabric");
+
+                    </th>
+                    <th>
+
+                        @Html.DisplayName("PatternCompletedDate");
+                    </th>
+                    <th>
+
+                        @Html.DisplayName("DateofAction");
+                    </th>
+                    <th>
+
+                        @Html.DisplayName("SampleRequiredDate");
+                    </th>
+                    @*<th>
+
+                        @Html.DisplayName("TotalCut");
+                    </th>
+                    <th>
+
+                        @Html.DisplayName("SampleRequiredDate");
+                    </th>
+                    <th>
+
+                        @Html.DisplayName("CutToday");
+                    </th>
+                    <th>
+
+                        @Html.DisplayName("AddedBy");
+                    </th>*@
+                 
+                </tr>
+
+
+               if(Model.SamDailyCutStatu!=null)
+                {
+                @foreach (var item in Model.SamDailyCutStatu)
+                {
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SampCutReqMaster.ReqNum)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SampCutReqMaster.PatterRefMaster.PatterRefNum)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SampCutReqMaster.SampleType.SampleType1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SampCutReqMaster.PatternStyle.StyleName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SampCutReqMaster.BuyerMaster.BuyerName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SampCutReqMaster.Fabric)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SampCutReqMaster.SampleRequiredDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateofAction)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SampCutReqMaster.SampleRequiredDate)
+                        </td>
+                        @*<td>
+                    @Html.DisplayFor(modelItem => item.CompletedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Remark)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MarkedCompletedBY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatternMaster.PaternMasterName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompletedQty)
+                </td>
+                <td>
+                    @Html.ActionLink("Update Cutting", "UpdateCut", new { id = item.CutAssignID }) |
+
+                </td>*@
+                    </tr>
+                }
+                }
+
+             
+
+            </table>
+
+
+
+
+
+
+
+
+
+        </div>
+</div>
+</div>

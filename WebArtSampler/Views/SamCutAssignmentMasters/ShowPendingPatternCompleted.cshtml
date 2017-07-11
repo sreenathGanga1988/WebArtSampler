@@ -1,0 +1,201 @@
+﻿@model IEnumerable<WebArtSampler.Models.SamCutAssignmentMaster>
+@{
+    ViewBag.Title = "ShowPendingPatternCompleted";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+
+    $(document).ready(
+        function () {
+
+
+            $('.table tr').dblclick(function () {
+
+                var id = $(this).find('td:eq(0)').text();
+
+                alert("You had Selected " + $(this).find('td:eq(1)').text())
+
+                id = parseInt(id);
+
+
+                      $("#Id").val(id);
+                      $("#CutAssignID").val(id);
+                $("#Id").trigger("chosen:updated");
+
+            });
+
+        }
+    );
+
+
+</script>
+    
+
+@using (Html.BeginForm("PatternCompleted", "SamCutAssignmentMasters"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+      
+
+        <div class="form-group">
+
+           
+            @Html.Label("Cutting Request #", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                      <div class="col-md-10">
+
+
+                @*@Html.DropDownListFor(model => model.CutAssignID, (SelectList)ViewBag.CutAssignID, "--Select One--", htmlAttributes: new { @class = "form-control" })*@
+
+                @Html.DropDownList("Id", (SelectList)ViewBag.CutAssignID, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+                          @Html.Hidden("CutAssignID")
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Completeddate", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+
+                @*@Html.DropDownListFor(model => model.CutAssignID, (SelectList)ViewBag.CutAssignID, "--Select One--", htmlAttributes: new { @class = "form-control" })*@
+
+
+
+                @Html.TextBox("FromDate", null, new { @class = "datepicker form-control ", type = "text" })
+            </div>
+        </div>
+
+
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+
+                <input id="btnSubmit" type="submit" value="PatternCompleted" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<h2>Pending Pattern Making</h2>
+
+
+<table class="table table-striped table-bordered table-hover table-responsive">
+    <tr>
+        <th>
+           ID
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SampCutReqMaster.ReqNum)
+        </th>
+        <th>
+            @Html.DisplayName("Atc/Ref");
+
+        </th>
+        <th>
+            @Html.DisplayName("Style");
+
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.SampCutReqMaster.Qty)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.ReceivedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceivedBy)
+
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.PatternReqDate)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.SignedBYMaster)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.SignedDate)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.CompletedDate)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.Remark)
+        </th>
+       
+        <th>
+
+            @Html.DisplayNameFor(model => model.PatternMaster.PaternMasterName)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.CompletedQty)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CutAssignID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SampCutReqMaster.ReqNum)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.SampCutReqMaster.PatterRefMaster.PatterRefNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SampCutReqMaster.PatternStyle.StyleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SampCutReqMaster.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceivedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceivedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatternReqDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SignedBYMaster)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SignedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.PatternMaster.PaternMasterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletedQty)
+            </td>
+           
+            
+        </tr>
+    }
+
+</table>
+

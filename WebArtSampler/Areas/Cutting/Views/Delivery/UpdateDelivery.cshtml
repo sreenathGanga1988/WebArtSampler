@@ -1,0 +1,252 @@
+﻿@model WebArtSampler.Models.SamCutAssignmentMaster
+@{
+    ViewBag.Title = "UpdateDelivery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UpdateSew</h2>
+
+<script>
+$(document).ready(function(){
+    $(".balQtycolmn").each(function () {
+
+  var index=$(this).closest('td').index();
+
+
+
+   var prevrow=$(this).closest('tr').prev();
+
+   var previousrowvalue=prevrow.find
+       ('td').eq(index).find('input:first').val()
+
+
+
+
+
+
+     var previousrowvaluefirst=prevrow.prev().find
+       ('td').eq(index).find('input:first').val()
+
+
+    $(this).val(previousrowvaluefirst-previousrowvalue);
+
+
+    });
+
+
+    $(".NewQtycolmn").change(function () {
+
+
+        var index = $(this).closest('td').index();
+
+        var thisvalue = $(this).val();
+
+        var prevrow = $(this).closest('tr').prev();
+
+        var previousrowvalue = prevrow.find
+            ('td').eq(index).find('input:first').val()
+
+
+        if(thisvalue>previousrowvalue)
+        {
+            alert("Cannot cut more than balance");
+            $(this).val(0);
+        }
+
+    });
+
+    $('td input').each(function () {
+
+        if($(this).val()=="")
+        {
+            $(this).val('0');
+        }
+
+    });
+
+});
+</script>
+
+<div class="form-horizontal">
+
+    <div class="row">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="col-sm-12">
+
+                <div class="form-horizontal">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.CutAssignID)
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+            <div class="col-sm-12">
+
+
+                <div class="form-group">
+                    @Html.Label("Sewing on ", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+
+
+                        @*@Html.DropDownListFor(model => model.CutAssignID, (SelectList)ViewBag.CutAssignID, "--Select One--", htmlAttributes: new { @class = "form-control" })*@
+
+
+                        @Html.EditorFor(model => model.SampCutReqMaster.DateofAction, new { htmlAttributes = new { @class = "datepicker form-control" } })
+
+
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SampCutreqID, "SampCutreqID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.HiddenFor(model => model.SampCutReqMaster.SampCutreqID)
+                        @Html.HiddenFor(model => model.SampCutreqID)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SampCutReqMaster.SizeDetail, "Sizeset", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table>
+                            <tr>
+                                <td>Size</td>
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size1, new { htmlAttributes = new { @class = "sizecolmn form-control", style = "width:80px" } })</td>
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size2, new { htmlAttributes = new { @class = "sizecolmn form-control", style = "width:80px" } })</td>
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size3, new { htmlAttributes = new { @class = "sizecolmn form-control", style = "width:80px" } })</td>
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size4, new { htmlAttributes = new { @class = "sizecolmn form-control", style = "width:80px" } })</td>
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size5, new { htmlAttributes = new { @class = "sizecolmn form-control", style = "width:80px" } })</td>
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size6, new { htmlAttributes = new { @class = "sizecolmn form-control", style = "width:80px" } })</td>
+                            </tr>
+                            <tr>
+                                <td>Already Sewed Qty</td>
+                                <td>
+                                    @Html.EditorFor(model => model.SampCutReqMaster.Size1SewQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })
+
+                                </td>
+
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size2SewQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size3SewQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size4SewQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size5SewQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size6SewQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+                            </tr>
+                            <tr>
+                                <td>Already Delivered Qty </td>
+                                <td>
+                                    @Html.EditorFor(model => model.SampCutReqMaster.Size1DeliveredQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })
+
+                                </td>
+
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size2DeliveredQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size3DeliveredQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size4DeliveredQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size5DeliveredQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.SampCutReqMaster.Size6DeliveredQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+                            </tr>
+                          
+                            <tr>
+                                <td>Balance To Deliver</td>
+                                <td>
+                                    @Html.Editor("0", new { htmlAttributes = new { @class = "balQtycolmn form-control", style = "width:80px" } })
+
+
+
+                                </td>
+
+                                <td>
+                                    @Html.Editor("0", new { htmlAttributes = new { @class = "balQtycolmn form-control", style = "width:80px" } })
+                                </td>
+
+                                <td>
+                                    @Html.Editor("0", new { htmlAttributes = new { @class = "balQtycolmn form-control", style = "width:80px" } })
+                                </td>
+
+                                <td>
+                                    @Html.Editor("0", new { htmlAttributes = new { @class = "balQtycolmn form-control", style = "width:80px" } })
+                                </td>
+
+                                <td>
+                                    @Html.Editor("0", new { htmlAttributes = new { @class = "balQtycolmn form-control", style = "width:80px" } })
+                                </td>
+
+                                <td>
+                                    @Html.Editor("0", new { htmlAttributes = new { @class = "balQtycolmn form-control", style = "width:80px" } })
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>New Delivery Qty </td>
+                                <td>
+                                    @Html.EditorFor(model => model.SizeQty1CutNew, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })
+
+                                </td>
+
+                                <td>@Html.EditorFor(model => model.SizeQty2CutNew, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.SizeQty3CutNew, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.SizeQty4CutNew, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.SizeQty5CutNew, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.SizeQty6CutNew, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        }
+
+
+
+    </div>
+</div>
+
+
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

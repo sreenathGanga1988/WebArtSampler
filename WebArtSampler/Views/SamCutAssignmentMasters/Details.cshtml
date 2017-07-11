@@ -1,0 +1,99 @@
+﻿@model WebArtSampler.Models.SamCutAssignmentMaster
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SamCutAssignmentMaster</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceivedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceivedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceivedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceivedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PatternReqDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatternReqDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SignedBYMaster)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SignedBYMaster)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SignedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SignedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarkedCompletedBY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarkedCompletedBY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PatternMaster.PaternMasterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatternMaster.PaternMasterName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SampCutReqMaster.ReqNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SampCutReqMaster.ReqNum)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CutAssignID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

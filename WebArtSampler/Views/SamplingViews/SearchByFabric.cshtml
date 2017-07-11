@@ -1,0 +1,212 @@
+﻿@model IEnumerable<WebArtSampler.Models.SamplingView>
+
+@{
+    ViewBag.Title = "SearchByFabric";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search By Fabric</h2>
+
+
+@using (Html.BeginForm("SearchByFabric", "SamplingViews"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.Label("Fabric", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+
+                @*@Html.DropDownListFor(model => model.CutAssignID, (SelectList)ViewBag.CutAssignID, "--Select One--", htmlAttributes: new { @class = "form-control" })*@
+
+                @Html.DropDownList("Id", (SelectList)ViewBag.patternmasterID, "Please Select", htmlAttributes: new { @class = "form-control" })
+
+
+            </div>
+        </div>
+
+        
+
+
+        <div class="form-group">
+            @Html.Label("From", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+
+                @*@Html.DropDownListFor(model => model.CutAssignID, (SelectList)ViewBag.CutAssignID, "--Select One--", htmlAttributes: new { @class = "form-control" })*@
+
+
+
+                @Html.TextBox("Fromdate", null, new { @class = "datepicker", type = "text" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("To", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+
+                @*@Html.DropDownListFor(model => model.CutAssignID, (SelectList)ViewBag.CutAssignID, "--Select One--", htmlAttributes: new { @class = "form-control" })*@
+
+                @Html.TextBox("todate", null, new { @class = "datepicker", type = "text" })
+                @*@Html.TextBox("todate", "",new {htmlAttributes = new {@class = "datepicker" } })*@
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<p><a class="btn btn-default" href="@Url.Action("LoadReport", "SamplingViews")">Format Report &raquo;</a></p>
+
+<hr />
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+
+            @Html.DisplayNameFor(model => model.ReqNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fabric)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StyleDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BuyerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatterRefNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StyleName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.SampleType)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.AddedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SampleRequiredDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignedDate)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PatternReqDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SignedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddedBy)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.CompletedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarkedCompletedBY)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReqNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fabric)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StyleDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuyerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatterRefNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StyleName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.SampleType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SampleRequiredDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatternReqDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssignedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SignedDate)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.AddedBy)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarkedCompletedBY)
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+
+<table border="1">
+    <tr>
+        <th>
+            No of Request Assigned
+        </th>
+        <th>
+            No of Request Completed
+        </th>
+        <th>
+            No of Request Signed
+        </th>
+    </tr>
+    <tr>
+        <td>@Html.Label("Set from controller", Convert.ToString((int)ViewBag.TotalRecords))</td>
+
+        <td>@Html.Label("Set from controller", Convert.ToString((int)ViewBag.Completedcode))</td>
+        <td>@Html.Label("Set from controller", Convert.ToString((int)ViewBag.Signedrecord))</td>
+
+    </tr>
+</table>
+
+

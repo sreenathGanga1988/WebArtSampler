@@ -1,0 +1,127 @@
+﻿
+@model List<WebArtSampler.Models.RequestSignModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+
+    
+
+<p>
+    @Html.ActionLink("Sign New", "SignRequest")
+   
+<p><a class="btn btn-default" href="@Url.Action("Index", "SamplingViews")">Show History Master wise &raquo;</a></p>
+<p><a class="btn btn-default" href="@Url.Action("SearchByFabric", "SamplingViews")">Show FabricWise &raquo;</a></p>
+<p><a class="btn btn-default" href="@Url.Action("getPendingOfday", "SamplingViews")">Show Pendings &raquo;</a></p>
+<p><a class="btn btn-default" href="@Url.Action("getPendingOfdaySample", "SamplingViews")">Show Pendings Sample Type wise &raquo;</a></p>
+<p><a class="btn btn-default" href="@Url.Action("CutReqView", "SamplingViews")">Show History Master wise &raquo;</a></p>
+
+
+</p>
+<table class="table table-striped table-bordered table-hover table-responsive" >
+    <tr>
+        <th>
+            Req#
+        </th>
+        <th>
+            Buyer
+        </th>
+        <th>
+            Pattern Ref#
+        </th>
+
+
+        <th>
+            Style
+        </th>
+        <th>
+            Style Description
+        </th>
+        <th>
+            Fabric
+        </th>
+
+
+
+        <th>
+            Sample Type
+        </th>
+        <th>
+            Pattern Required Date
+        </th>
+        <th>
+            MasterName
+        </th>
+
+        <th>
+            Signed 
+        </th>
+        <th>
+            AddedBy
+        </th>
+        <th></th>
+    </tr>
+
+   @foreach (var student in Model)
+   {
+
+        <tr>
+            <td>
+                @student.ReqNum
+            </td>
+            <td>
+                @student.BuyerName
+            </td>
+            <td>
+                @student.PatterRefNum
+            </td>
+            <td>
+                @student.StyleName
+            </td>
+            <td>
+                @student.StyleDescription
+            </td>
+
+            <td>
+                @student.Fabric
+            </td>
+            <td>
+                @student.SampleType
+            </td>
+            <td>
+                @student.SampleRequiredDate
+            </td>
+            <td>
+                @student.PaternMasterName
+            </td>
+            <td>
+
+
+    @Html.DisplayFor(modelItem => student.SignedBYMaster)
+
+ 
+
+
+            </td>
+            
+            <td>
+                @student.AddedBy
+            </td>
+
+            <td>
+
+                @Html.ActionLink("View", "CutReqView",
+                "SamplingViews", new {id = student.cutreqid}, null) 
+              
+            </td>
+</tr>
+
+    }
+
+  
+
+</table>

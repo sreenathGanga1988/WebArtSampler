@@ -1,0 +1,225 @@
+﻿@model WebArtSampler.Models.SamCutAssignmentMaster
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Recieve</h2>
+<script>
+
+    $(document).ready(
+        function ()
+        {
+            debugger
+
+            var daytoadd=2;
+            var datetimeelement = document.getElementsByClassName("datepicker");
+
+            var today = new Date();
+
+            var mytoday = Date().split(' ')[0];
+            datetimeelement[0].value = new Date().toString().split(" ").slice(0, 4).join(" ");
+                    
+
+            
+           
+
+            if (today.getDay() == 0 || today.getDay() == 1 || today.getDay() == 2 || today.getDay() == 6)
+            {
+                daytoadd = 2
+            }
+           else {
+                daytoadd = 3
+            }
+            var d = new Date();
+            d.setDate(d.getDate() + daytoadd);
+            datetimeelement[1].value = d.toString().split(" ").slice(0, 4).join(" ");
+
+
+            $('.table tr').dblclick(function () {
+
+                var id = $(this).find('td:eq(0)').text();
+               
+                alert("You had Selected " + $(this).find('td:eq(1)').text())
+
+                id = parseInt(id);
+              
+
+                $("#SampCutreqID").val(id);
+
+                $("#SampCutreqID").trigger("chosen:updated");
+
+            });
+
+        }
+    );
+
+
+</script>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Receive Cutting Ticket</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SampCutreqID, "Cut Req#", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SampCutreqID", null, htmlAttributes: new { @class = "chosen-select form-control " })
+                @Html.ValidationMessageFor(model => model.SampCutreqID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReceivedDate, "Received Date#", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReceivedDate, new { htmlAttributes = new { @class = "datepicker", @id = "datepicker" } })
+                @Html.ValidationMessageFor(model => model.ReceivedDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReceivedBy, "Received By#", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReceivedBy, new { htmlAttributes = new { @class = "form-control"  } })
+                @Html.ValidationMessageFor(model => model.ReceivedBy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+  
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PatternReqDate, "PatternReq  Date ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PatternReqDate, new { htmlAttributes = new { @class = "datepicker" } })
+                @Html.ValidationMessageFor(model => model.PatternReqDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+      
+
+    
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<div>
+    <h4>Pending Cutting Ticket To Receive</h4>
+       
+</div>
+<table class="table">
+    <tr>
+        <th>
+
+            @Html.DisplayName("ID")
+        </th>
+        <th>
+
+            @Html.DisplayName("ReqNum")
+        </th>
+        <th>
+
+            @Html.DisplayName("Fabric")
+        </th>
+        <th>
+
+            @Html.DisplayName("SampleRequiredDate")
+        </th>
+        <th>
+
+            @Html.DisplayName("AddedDate")
+        </th>
+        <th>
+
+            @Html.DisplayName("AddedBy")
+        </th>
+        <th>
+
+            @Html.DisplayName("BuyerName")
+        </th>
+        <th>
+
+            @Html.DisplayName("StyleName")
+        </th>
+        <th>
+
+            @Html.DisplayName("PatterRefNum")
+        </th>
+        <th>
+
+            @Html.DisplayName("SampleType1")
+        </th>
+        <th>
+
+            @Html.DisplayName("SizeDetail")
+        </th>
+        <th>
+
+            @Html.DisplayName("Qty")
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (WebArtSampler.Models.SampCutReqMaster item in ViewBag.sampCutReqMasterssort)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SampCutreqID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReqNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fabric)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SampleRequiredDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuyerMaster.BuyerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatternStyle.StyleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatterRefMaster.PatterRefNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SampleType.SampleType1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SizeDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+
+            <td>
+                @Html.Display("NA")
+            </td>
+
+
+
+
+        </tr>
+    }
+
+</table>

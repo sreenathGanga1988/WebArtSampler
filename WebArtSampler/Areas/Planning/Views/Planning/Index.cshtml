@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Priority Planing</h2>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Create New Cuting Priority</h2>
+        <p>
+            Create New Cuting Priority
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "CuttingPriorityController")">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Create New Sewing Priority</h2>
+        <p>  Create New Sewing Priority</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "SewingPriorityController")">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Actual Cutting</h2>
+        <p> Update Actual Cut Against Plan </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Cutting",new { area = "Cutting" })">Learn more &raquo;</a></p>
+    
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Actual Sewing</h2>
+        <p>
+           Update actual Sewing Against Planing
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "CuttingPriorityController")">Learn more &raquo;</a></p>
+    </div>
+   
+</div>

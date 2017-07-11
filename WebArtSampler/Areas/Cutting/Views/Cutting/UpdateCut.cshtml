@@ -1,0 +1,271 @@
+﻿@model WebArtSampler.Areas.Cutting.Models.CuttingViewModel
+
+@{
+    ViewBag.Title = "UpdateCut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+$(document).ready(function(){
+    $(".balQtycolmn").each(function () {
+
+  var index=$(this).closest('td').index();
+
+
+
+   var prevrow=$(this).closest('tr').prev();
+
+   var previousrowvalue=prevrow.find
+       ('td').eq(index).find('input:first').val()
+
+
+
+
+
+
+     var previousrowvaluefirst=prevrow.prev().find
+       ('td').eq(index).find('input:first').val()
+
+
+     var a = parseFloat(previousrowvaluefirst) - parseFloat(previousrowvalue);
+     a = a || 0;
+     $(this).val(a);
+
+
+    });
+
+
+    $('.balQtycolmn, .Qtycolmn, .sizecolmn').on('click', function () {
+
+        alert("You cannot change it");
+    });
+
+
+    $(".NewQtycolmn").change(function () {
+
+      debugger
+        
+        var index = $(this).closest('td').index();
+
+        var thisvalue = $(this).val();
+
+        var prevrow = $(this).closest('tr').prev();
+
+        var previousrowvalue = prevrow.find
+            ('td').eq(index).find('input:first').val()
+
+
+        if (parseFloat(thisvalue) > parseFloat(previousrowvalue))
+        {
+            alert("Cannot cut more than balance");
+            $(this).val(0);
+        }
+
+    });
+    $('td input').each(function () {
+
+        if ($(this).val() == "") {
+            $(this).val('0');
+        }
+
+    });
+});
+</script>
+<h2>UpdateCut</h2>
+<div class="form-horizontal">
+
+    <div class="row">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="col-sm-12">
+
+                <div class="form-horizontal">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.samcutAssignmentmaster. CutAssignID)
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+            <div class="col-sm-12">
+
+
+                <div class="form-group">
+                    @Html.Label("Cutting on ", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+
+
+                        @*@Html.DropDownListFor(model => model.CutAssignID, (SelectList)ViewBag.CutAssignID, "--Select One--", htmlAttributes: new { @class = "form-control" })*@
+
+
+                        @Html.EditorFor(model => model.DateofAction, new { htmlAttributes = new { @class = "datepicker form-control" } })
+
+
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.samcutAssignmentmaster.SampCutreqID, "SampCutreqID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.HiddenFor(model => model.samcutAssignmentmaster.SampCutReqMaster.SampCutreqID)
+                        @Html.HiddenFor(model => model.samcutAssignmentmaster.SampCutreqID)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.samcutAssignmentmaster.SampCutReqMaster.SizeDetail, "Sizeset", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table>
+                            <tr>
+                                <td>Size</td>
+                               
+
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Size1, new { @class = "sizecolmn form-control",style = "width:80px" ,@readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Size2, new { @class = "sizecolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Size3, new { @class = "sizecolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Size4, new { @class = "sizecolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Size5, new { @class = "sizecolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Size6, new { @class = "sizecolmn form-control", style = "width:80px", @readonly = true })</td>
+
+                            </tr>
+                            <tr>
+                                <td>Qty</td>
+
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Qty1, new { @class = "Qtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Qty2, new { @class = "Qtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Qty3, new { @class = "Qtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Qty4, new { @class = "Qtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Qty5, new { @class = "Qtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Qty6, new { @class = "Qtycolmn form-control", style = "width:80px", @readonly = true })</td>
+
+
+        </tr>
+                            <tr>
+                                <td>Already Cut</td>
+
+
+
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Size1CutQty, new { @class = "Qtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Size2CutQty, new { @class = "Qtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Size3CutQty, new { @class = "Qtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Size4CutQty, new { @class = "Qtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Size5CutQty, new { @class = "Qtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBoxFor(model => model.samcutAssignmentmaster.SampCutReqMaster.Size6CutQty, new { @class = "Qtycolmn form-control", style = "width:80px", @readonly = true })</td>
+
+
+
+
+
+
+
+
+
+   </tr>
+                            <tr>
+                                <td>Balance</td>
+
+
+
+                                <td>@Html.TextBox("balQtycolmn1","0", new { @class = "balQtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBox("balQtycolmn2","0", new { @class = "balQtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBox("balQtycolmn3","0", new { @class = "balQtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBox("balQtycolmn4","0", new { @class = "balQtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBox("balQtycolmn5","0", new { @class = "balQtycolmn form-control", style = "width:80px", @readonly = true })</td>
+                                <td>@Html.TextBox("balQtycolmn6","0", new { @class = "balQtycolmn form-control", style = "width:80px", @readonly = true })</td>
+
+
+
+
+
+
+
+                                @*<td>
+                                    @Html.Editor("0", new { htmlAttributes = new { @class = "balQtycolmn form-control", style = "width:80px" } })
+
+
+
+                                </td>
+
+                                <td>
+                                    @Html.Editor("0", new { htmlAttributes = new { @class = "balQtycolmn form-control", style = "width:80px" } })
+                                </td>
+
+                                <td>
+                                    @Html.Editor("0", new { htmlAttributes = new { @class = "balQtycolmn form-control", style = "width:80px" } })
+                                </td>
+
+                                <td>
+                                    @Html.Editor("0", new { htmlAttributes = new { @class = "balQtycolmn form-control", style = "width:80px" } })
+                                </td>
+
+                                <td>
+                                    @Html.Editor("0", new { htmlAttributes = new { @class = "balQtycolmn form-control", style = "width:80px" } })
+                                </td>
+
+                                <td>
+                                    @Html.Editor("0", new { htmlAttributes = new { @class = "balQtycolmn form-control", style = "width:80px" } })
+                                </td>*@
+                            </tr>
+
+                            <tr>
+                                <td>New Cut</td>
+                                <td>
+                                    @Html.EditorFor(model => model.samcutAssignmentmaster.SizeQty1CutNew, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })
+
+                                </td>
+
+                                <td>@Html.EditorFor(model => model.samcutAssignmentmaster.SizeQty2CutNew, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.samcutAssignmentmaster.SizeQty3CutNew, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.samcutAssignmentmaster.SizeQty4CutNew, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.samcutAssignmentmaster.SizeQty5CutNew, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+
+                                <td>@Html.EditorFor(model => model.samcutAssignmentmaster.SizeQty6CutNew, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        }
+
+
+
+    </div>
+  </div>
+    
+
+
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

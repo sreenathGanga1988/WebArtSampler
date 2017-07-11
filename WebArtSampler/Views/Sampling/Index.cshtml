@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Sampling DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sampling Dash Board</h2>
+
+<div>
+    @*<h3>
+
+        <ul>
+            <li>
+                @Html.ActionLink("Create Master", "Index", "PatternMasters")
+            </li>
+            <li>
+                @Html.ActionLink("Create Sample type", "Index", "SampleTypes")
+            </li>
+            <li>
+                @Html.ActionLink("Receive Request", "Index", "SamCutAssignmentMasters")
+            </li>
+            <li>
+                @Html.ActionLink("Assign Request", "AssignRequest", "SamCutAssignmentMasters")
+            </li>
+        </ul>
+    </h3>*@
+    
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Create New Master</h2>
+            <p>
+                Create New master Here
+            </p>
+            <p><a class="btn btn-default" href="@Url.Action("Index", "PatternMasters")">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Create Sample type</h2>
+            <p>In this Section You will Create sample Type</p>
+            <p><a class="btn btn-default" href="@Url.Action("Index", "SampleTypes")">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Receive Request</h2>
+            <p>Here You will receive Pending Cutting Ticket</p>
+            <p><a class="btn btn-default" href="@Url.Action("Create", "SamCutAssignmentMasters")">Learn more &raquo;</a></p>
+        </div>
+    </div>
+
+  
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Assign Master</h2>
+            <p>
+                You will Assign the master against Recieived Cutting ticket
+            </p>
+            <p><a class="btn btn-default" href="@Url.Action("AssignRequest", "SamCutAssignmentMasters")">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Update Pattern Completed </h2>
+            <p>In this Section You will enter the  Daily Pattern Completion </p>
+            @*<p><a class="btn btn-default" href="@Url.Action("Index", "Planning/Planning")">Learn more &raquo;</a></p>*@
+            <p><a class="btn btn-default" href="@Url.Action("ShowPendingPatternCompleted", "SamCutAssignmentMasters")">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Update Daily Cutting </h2>
+            <p>In this Section You will enter the  Daily Cutting output</p>
+            @*<p><a class="btn btn-default" href="@Url.Action("Index", "Planning/Planning")">Learn more &raquo;</a></p>*@
+            <p><a class="btn btn-default" href="@Url.Action("Index", "Cutting",new { area = "Cutting" })">Learn more &raquo;</a></p>
+        </div>
+    </div>
+   
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Update Daily Sewing</h2>
+            <p>In this Section You will enter the  Daily Sewing output</p>
+            <p><a class="btn btn-default" href="@Url.Action("ShowPendingToSew", "Sewing",new { area = "Cutting" })">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Update Daily Delivery</h2>
+            <p>Update Daily Delivery status of Cutting ticket</p>
+            <p><a class="btn btn-default" href="@Url.Action("ShowPendingDelivery", "Delivery",new { area = "Cutting" })">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Update Cutting Ticket Status</h2>
+            <p>Here You will receive Pending Cutting Ticket</p>
+            <p><a class="btn btn-default" href="@Url.Action("Index", "SamCutAssignmentMasters")">Learn more &raquo;</a></p>
+        </div>
+    </div>
+</div>

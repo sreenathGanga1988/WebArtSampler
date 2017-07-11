@@ -1,0 +1,133 @@
+﻿@model IEnumerable<WebArtSampler.Models.RequestViewModel>
+@{
+    ViewBag.Title = "ShowCutreqStatus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cutting Ticket Status</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table  class="table table-striped table-bordered table-hover table-responsive exporttable" >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReqNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fabric)
+        </th>
+        <th>
+         
+            @Html.DisplayName("SampleRequired Date")
+        </th>
+        <th>
+            @Html.DisplayName("AddedDate")
+           
+        </th>
+        <th>
+              @Html.DisplayName("Added By")
+           
+        </th>
+        <th>
+            @Html.DisplayName("Buyer")
+        </th>
+        <th>
+            @Html.DisplayName("Style")
+        </th>
+        <th>
+            @Html.DisplayName("Ref/ATC")
+        </th>
+        <th>
+            @Html.DisplayName("Sample Type")
+          
+        </th>
+        <th>
+            @Html.DisplayName("Size")
+        </th>
+        <th>
+            @Html.DisplayName("Qty")
+        </th>
+        <th>
+            @Html.DisplayName("Cut")
+        </th>
+        <th>
+            @Html.DisplayName("Sew")
+        </th>
+        <th>
+            @Html.DisplayName("Delivered")
+        </th>
+        <th>
+            @Html.DisplayName("Status")
+        </th>
+        <th>
+            @Html.DisplayName("Action")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReqNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fabric)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SampleRequiredDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuyerName1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stylename1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatterRefNum1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SampleTypename1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SizeDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <th>
+              
+                @Html.DisplayFor(modelItem => item.totalcut)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.totalsew)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.totalDelivered)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SampCutreqID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.SampCutreqID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SampCutreqID })
+              
+            </td>
+            <td>
+                @Html.ActionLink("Mark Completed", "Complete", new { id = item.SampCutreqID })
+            </td>
+        </tr>
+    }
+
+</table>
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="84cfac9f5b1a4cc180e81313f2e37041" Name="Diagram1">
+        <EntityTypeShape EntityType="ArtModel.PatternMaster" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtModel.PatterRefMaster" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ArtModel.PatternStyle" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ArtModel.BuyerMaster" Width="1.5" PointX="3.375" PointY="6.375" />
+        <EntityTypeShape EntityType="ArtModel.SampleType" Width="1.5" PointX="8.375" PointY="8" />
+        <EntityTypeShape EntityType="ArtModel.SamCutAssignmentMaster" Width="1.5" PointX="3" PointY="12.75" />
+        <AssociationConnector Association="ArtModel.FK_SamCutAssignmentMaster_PatternMaster" />
+        <EntityTypeShape EntityType="ArtModel.SamplingFabricMaster" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="ArtModel.SamplingView" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ArtModel.SamCutPlanPriority" Width="1.5" PointX="5.25" PointY="13.875" />
+        <AssociationConnector Association="ArtModel.FK_SamCutPlanPriority_SamCutAssignmentMaster" />
+        <EntityTypeShape EntityType="ArtModel.SamSewingPriority" Width="1.5" PointX="5.25" PointY="17" />
+        <AssociationConnector Association="ArtModel.FK_SamSewingPriority_SamCutAssignmentMaster" />
+        <EntityTypeShape EntityType="ArtModel.SampCutReqMaster" Width="1.5" PointX="10.625" PointY="0.75" />
+        <AssociationConnector Association="ArtModel.FK_SampCutReqMaster_BuyerMaster" />
+        <AssociationConnector Association="ArtModel.FK_SampCutReqMaster_PatternStyle" />
+        <AssociationConnector Association="ArtModel.FK_SampCutReqMaster_PatterRefMaster" />
+        <AssociationConnector Association="ArtModel.FK_SamCutAssignmentMaster_SampCutReqMaster" />
+        <AssociationConnector Association="ArtModel.FK_SampCutReqMaster_SampCutReqMaster" />
+        <AssociationConnector Association="ArtModel.FK_SampCutReqMaster_SampleType" />
+        <EntityTypeShape EntityType="ArtModel.SamDailySewStatu" Width="1.5" PointX="12.875" PointY="1.25" />
+        <AssociationConnector Association="ArtModel.FK_SamDailySewStatus_SampCutReqMaster" />
+        <EntityTypeShape EntityType="ArtModel.SamDailyDeliveryStatu" Width="1.5" PointX="12.875" PointY="9.5" />
+        <AssociationConnector Association="ArtModel.FK_SamDailyDeliveryStatus_SampCutReqMaster" />
+        <EntityTypeShape EntityType="ArtModel.SamDailyCutStatu" Width="1.5" PointX="12.875" PointY="5.5" />
+        <AssociationConnector Association="ArtModel.FK_SamDailyCutStatus_SampCutReqMaster" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

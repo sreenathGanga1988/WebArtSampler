@@ -1,0 +1,129 @@
+﻿@model WebArtSampler.Models.SamplingView
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SamplingView</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReqNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReqNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fabric)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fabric)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StyleDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StyleDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BuyerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuyerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PatterRefNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatterRefNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StyleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StyleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SampleRequiredDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SampleRequiredDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SignedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SignedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarkedCompletedBY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarkedCompletedBY)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

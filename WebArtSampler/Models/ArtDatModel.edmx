@@ -1,0 +1,1285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ArtModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BuyerMaster">
+          <Key>
+            <PropertyRef Name="BuyerID" />
+          </Key>
+          <Property Name="BuyerID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuyerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prefix" Type="nchar" MaxLength="10" />
+          <Property Name="Adress" Type="nvarchar(max)" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryCode" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="CurrencyCode" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="PaymentModeCode" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="Department" Type="nvarchar" MaxLength="50" />
+          <Property Name="Agent" Type="nvarchar" MaxLength="50" />
+          <Property Name="Allowance" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="AccountCode" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Debitaccid" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Br" Type="nchar" MaxLength="10" />
+          <Property Name="partner_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="IsActive" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PatternMaster">
+          <Key>
+            <PropertyRef Name="PatternMasterID" />
+          </Key>
+          <Property Name="PatternMasterID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaternMasterName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PatternStyle">
+          <Key>
+            <PropertyRef Name="PatternStyleID" />
+          </Key>
+          <Property Name="PatternStyleID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StyleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PatterRefMaster">
+          <Key>
+            <PropertyRef Name="PatternRefID" />
+          </Key>
+          <Property Name="PatternRefID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatterRefNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SamCutAssignmentMaster">
+          <Key>
+            <PropertyRef Name="CutAssignID" />
+          </Key>
+          <Property Name="CutAssignID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SampCutreqID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ReceivedDate" Type="datetime" Nullable="false" />
+          <Property Name="ReceivedBy" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="PatternMasterID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="AssignedDate" Type="datetime" />
+          <Property Name="SignedBYMaster" Type="bit" Nullable="false" />
+          <Property Name="SignedDate" Type="datetime" />
+          <Property Name="CompletedDate" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+          <Property Name="MarkedCompletedBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatternReqDate" Type="datetime" />
+          <Property Name="PatternCompletedDate" Type="datetime" />
+          <Property Name="SamplingStatus_PK" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CompletedQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PendingReason" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SamCutPlanPriority">
+          <Key>
+            <PropertyRef Name="SamCutPriorityID" />
+          </Key>
+          <Property Name="SamCutPriorityID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlanDate" Type="datetime" />
+          <Property Name="CutAssignID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Priority" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ToCutQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ActualCut" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="SamDailyCutStatus">
+          <Key>
+            <PropertyRef Name="SamCutttingDailyId" />
+          </Key>
+          <Property Name="SamCutttingDailyId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SampCutreqID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size1CutQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size2CutQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size3CutQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size4CutQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size5CutQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size6CutQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="DateofAction" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SamDailyDeliveryStatus">
+          <Key>
+            <PropertyRef Name="SamDeliveryDailyId" />
+          </Key>
+          <Property Name="SamDeliveryDailyId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SampCutreqID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size1DeliveryQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size2DeliveryQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size3DeliveryQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size4DeliveryQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size5DeliveryQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size6DeliveryQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="DateofAction" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SamDailySewStatus">
+          <Key>
+            <PropertyRef Name="SamSewingDailyId" />
+          </Key>
+          <Property Name="SamSewingDailyId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SampCutreqID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size1SewtQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size2SewQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size3SewQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size4SewQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size5SewQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size6SewQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="DateofAction" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SampCutReqMaster">
+          <Key>
+            <PropertyRef Name="SampCutreqID" />
+          </Key>
+          <Property Name="SampCutreqID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReqNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fabric" Type="nvarchar" MaxLength="100" />
+          <Property Name="StyleDescription" Type="nvarchar(max)" />
+          <Property Name="BuyerID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PatternRefID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PatternStyleID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="SampleTypeID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="SampleRequiredDate" Type="datetime" />
+          <Property Name="AddedDate" Type="datetime" />
+          <Property Name="AddedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="SizeDetail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="MarkCompleted" Type="bit" />
+          <Property Name="MarkedCompletedDate" Type="datetime" />
+          <Property Name="MarkCompletedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsTeckPack" Type="bit" Nullable="false" />
+          <Property Name="IsReceived" Type="nchar" MaxLength="10" />
+          <Property Name="Size1" Type="nvarchar" MaxLength="20" />
+          <Property Name="Size2" Type="nvarchar" MaxLength="20" />
+          <Property Name="Size3" Type="nvarchar" MaxLength="20" />
+          <Property Name="Size4" Type="nvarchar" MaxLength="20" />
+          <Property Name="Size5" Type="nvarchar" MaxLength="20" />
+          <Property Name="Size6" Type="nvarchar" MaxLength="20" />
+          <Property Name="Qty1" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Qty2" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Qty3" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Qty4" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Qty5" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Qty6" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size1CutQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size2CutQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size3CutQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size4CutQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size5CutQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size6CutQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size1SewQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size2SewQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size3SewQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size4SewQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size5SewQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size6SewQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="DateofAction" Type="datetime" />
+          <Property Name="Size1DeliveredQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size2DeliveredQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size3DeliveredQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size4DeliveredQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size5DeliveredQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Size6DeliveredQty" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="SampleType">
+          <Key>
+            <PropertyRef Name="SampleTypeID" />
+          </Key>
+          <Property Name="SampleTypeID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SampleType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CuttingTicketFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="NeedApproval" Type="bit" />
+          <Property Name="SampleApprovalID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="NeedReApproval" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="SamplingFabricMaster">
+          <Key>
+            <PropertyRef Name="FabricID" />
+          </Key>
+          <Property Name="FabricID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fabric" Type="nvarchar" MaxLength="100" />
+          <Property Name="ISDeleted" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SamSewingPriority">
+          <Key>
+            <PropertyRef Name="SamSewPriorityID" />
+          </Key>
+          <Property Name="SamSewPriorityID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlanDate" Type="datetime" />
+          <Property Name="CutAssignID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Priority" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ToSewQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ActualSew" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Art.dbo.SamplingView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SamplingView">
+          <Key>
+            <PropertyRef Name="ReceivedDate" />
+            <PropertyRef Name="ReceivedBy" />
+            <PropertyRef Name="SignedBYMaster" />
+            <PropertyRef Name="PaternMasterName" />
+            <PropertyRef Name="PatternMasterID" />
+            <PropertyRef Name="SampleType" />
+            <PropertyRef Name="BuyerID" />
+            <PropertyRef Name="SampleTypeID" />
+            <PropertyRef Name="IsTeckPack" />
+          </Key>
+          <Property Name="ReqNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fabric" Type="nvarchar" MaxLength="100" />
+          <Property Name="StyleDescription" Type="nvarchar(max)" />
+          <Property Name="BuyerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatterRefNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="StyleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddedDate" Type="datetime" />
+          <Property Name="AddedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceivedDate" Type="datetime" Nullable="false" />
+          <Property Name="ReceivedBy" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="SignedBYMaster" Type="bit" Nullable="false" />
+          <Property Name="SignedDate" Type="datetime" />
+          <Property Name="CompletedDate" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+          <Property Name="MarkedCompletedBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaternMasterName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PatternMasterID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SampleType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SampleRequiredDate" Type="datetime" />
+          <Property Name="AssignedDate" Type="datetime" />
+          <Property Name="PatternReqDate" Type="datetime" />
+          <Property Name="BuyerID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SampleTypeID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CompletedQty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PendingReason" Type="nvarchar(max)" />
+          <Property Name="PatternCompletedDate" Type="datetime" />
+          <Property Name="SizeDetail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qty" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Expr1" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsTeckPack" Type="bit" Nullable="false" />
+          <Property Name="IsReceived" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_SamCutAssignmentMaster_PatternMaster">
+          <End Role="PatternMaster" Type="Self.PatternMaster" Multiplicity="0..1" />
+          <End Role="SamCutAssignmentMaster" Type="Self.SamCutAssignmentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatternMaster">
+              <PropertyRef Name="PatternMasterID" />
+            </Principal>
+            <Dependent Role="SamCutAssignmentMaster">
+              <PropertyRef Name="PatternMasterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SamCutAssignmentMaster_SampCutReqMaster">
+          <End Role="SampCutReqMaster" Type="Self.SampCutReqMaster" Multiplicity="1" />
+          <End Role="SamCutAssignmentMaster" Type="Self.SamCutAssignmentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SampCutReqMaster">
+              <PropertyRef Name="SampCutreqID" />
+            </Principal>
+            <Dependent Role="SamCutAssignmentMaster">
+              <PropertyRef Name="SampCutreqID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SamCutPlanPriority_SamCutAssignmentMaster">
+          <End Role="SamCutAssignmentMaster" Type="Self.SamCutAssignmentMaster" Multiplicity="0..1" />
+          <End Role="SamCutPlanPriority" Type="Self.SamCutPlanPriority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SamCutAssignmentMaster">
+              <PropertyRef Name="CutAssignID" />
+            </Principal>
+            <Dependent Role="SamCutPlanPriority">
+              <PropertyRef Name="CutAssignID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SamDailyCutStatus_SampCutReqMaster">
+          <End Role="SampCutReqMaster" Type="Self.SampCutReqMaster" Multiplicity="0..1" />
+          <End Role="SamDailyCutStatus" Type="Self.SamDailyCutStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SampCutReqMaster">
+              <PropertyRef Name="SampCutreqID" />
+            </Principal>
+            <Dependent Role="SamDailyCutStatus">
+              <PropertyRef Name="SampCutreqID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SamDailyDeliveryStatus_SampCutReqMaster">
+          <End Role="SampCutReqMaster" Type="Self.SampCutReqMaster" Multiplicity="0..1" />
+          <End Role="SamDailyDeliveryStatus" Type="Self.SamDailyDeliveryStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SampCutReqMaster">
+              <PropertyRef Name="SampCutreqID" />
+            </Principal>
+            <Dependent Role="SamDailyDeliveryStatus">
+              <PropertyRef Name="SampCutreqID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SamDailySewStatus_SampCutReqMaster">
+          <End Role="SampCutReqMaster" Type="Self.SampCutReqMaster" Multiplicity="0..1" />
+          <End Role="SamDailySewStatus" Type="Self.SamDailySewStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SampCutReqMaster">
+              <PropertyRef Name="SampCutreqID" />
+            </Principal>
+            <Dependent Role="SamDailySewStatus">
+              <PropertyRef Name="SampCutreqID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SampCutReqMaster_BuyerMaster">
+          <End Role="BuyerMaster" Type="Self.BuyerMaster" Multiplicity="0..1" />
+          <End Role="SampCutReqMaster" Type="Self.SampCutReqMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuyerMaster">
+              <PropertyRef Name="BuyerID" />
+            </Principal>
+            <Dependent Role="SampCutReqMaster">
+              <PropertyRef Name="BuyerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SampCutReqMaster_PatternStyle">
+          <End Role="PatternStyle" Type="Self.PatternStyle" Multiplicity="0..1" />
+          <End Role="SampCutReqMaster" Type="Self.SampCutReqMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatternStyle">
+              <PropertyRef Name="PatternStyleID" />
+            </Principal>
+            <Dependent Role="SampCutReqMaster">
+              <PropertyRef Name="PatternStyleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SampCutReqMaster_PatterRefMaster">
+          <End Role="PatterRefMaster" Type="Self.PatterRefMaster" Multiplicity="0..1" />
+          <End Role="SampCutReqMaster" Type="Self.SampCutReqMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatterRefMaster">
+              <PropertyRef Name="PatternRefID" />
+            </Principal>
+            <Dependent Role="SampCutReqMaster">
+              <PropertyRef Name="PatternRefID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SampCutReqMaster_SampCutReqMaster">
+          <End Role="SampCutReqMaster" Type="Self.SampCutReqMaster" Multiplicity="1" />
+          <End Role="SampCutReqMaster1" Type="Self.SampCutReqMaster" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SampCutReqMaster">
+              <PropertyRef Name="SampCutreqID" />
+            </Principal>
+            <Dependent Role="SampCutReqMaster1">
+              <PropertyRef Name="SampCutreqID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SampCutReqMaster_SampleType">
+          <End Role="SampleType" Type="Self.SampleType" Multiplicity="0..1" />
+          <End Role="SampCutReqMaster" Type="Self.SampCutReqMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SampleType">
+              <PropertyRef Name="SampleTypeID" />
+            </Principal>
+            <Dependent Role="SampCutReqMaster">
+              <PropertyRef Name="SampleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SamSewingPriority_SamCutAssignmentMaster">
+          <End Role="SamCutAssignmentMaster" Type="Self.SamCutAssignmentMaster" Multiplicity="0..1" />
+          <End Role="SamSewingPriority" Type="Self.SamSewingPriority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SamCutAssignmentMaster">
+              <PropertyRef Name="CutAssignID" />
+            </Principal>
+            <Dependent Role="SamSewingPriority">
+              <PropertyRef Name="CutAssignID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ArtModelStoreContainer">
+          <EntitySet Name="BuyerMaster" EntityType="Self.BuyerMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatternMaster" EntityType="Self.PatternMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatternStyle" EntityType="Self.PatternStyle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatterRefMaster" EntityType="Self.PatterRefMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SamCutAssignmentMaster" EntityType="Self.SamCutAssignmentMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SamCutPlanPriority" EntityType="Self.SamCutPlanPriority" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SamDailyCutStatus" EntityType="Self.SamDailyCutStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SamDailyDeliveryStatus" EntityType="Self.SamDailyDeliveryStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SamDailySewStatus" EntityType="Self.SamDailySewStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SampCutReqMaster" EntityType="Self.SampCutReqMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SampleType" EntityType="Self.SampleType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SamplingFabricMaster" EntityType="Self.SamplingFabricMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SamSewingPriority" EntityType="Self.SamSewingPriority" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SamplingView" EntityType="Self.SamplingView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SamplingView].[ReqNum] AS [ReqNum], 
+    [SamplingView].[Fabric] AS [Fabric], 
+    [SamplingView].[StyleDescription] AS [StyleDescription], 
+    [SamplingView].[BuyerName] AS [BuyerName], 
+    [SamplingView].[PatterRefNum] AS [PatterRefNum], 
+    [SamplingView].[StyleName] AS [StyleName], 
+    [SamplingView].[AddedDate] AS [AddedDate], 
+    [SamplingView].[AddedBy] AS [AddedBy], 
+    [SamplingView].[ReceivedDate] AS [ReceivedDate], 
+    [SamplingView].[ReceivedBy] AS [ReceivedBy], 
+    [SamplingView].[SignedBYMaster] AS [SignedBYMaster], 
+    [SamplingView].[SignedDate] AS [SignedDate], 
+    [SamplingView].[CompletedDate] AS [CompletedDate], 
+    [SamplingView].[Remark] AS [Remark], 
+    [SamplingView].[MarkedCompletedBY] AS [MarkedCompletedBY], 
+    [SamplingView].[PaternMasterName] AS [PaternMasterName], 
+    [SamplingView].[PatternMasterID] AS [PatternMasterID], 
+    [SamplingView].[SampleType] AS [SampleType], 
+    [SamplingView].[SampleRequiredDate] AS [SampleRequiredDate], 
+    [SamplingView].[AssignedDate] AS [AssignedDate], 
+    [SamplingView].[PatternReqDate] AS [PatternReqDate], 
+    [SamplingView].[BuyerID] AS [BuyerID], 
+    [SamplingView].[SampleTypeID] AS [SampleTypeID], 
+    [SamplingView].[CompletedQty] AS [CompletedQty], 
+    [SamplingView].[PendingReason] AS [PendingReason], 
+    [SamplingView].[PatternCompletedDate] AS [PatternCompletedDate], 
+    [SamplingView].[SizeDetail] AS [SizeDetail], 
+    [SamplingView].[Qty] AS [Qty], 
+    [SamplingView].[Expr1] AS [Expr1], 
+    [SamplingView].[IsTeckPack] AS [IsTeckPack], 
+    [SamplingView].[IsReceived] AS [IsReceived]
+    FROM [dbo].[SamplingView] AS [SamplingView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_SamCutAssignmentMaster_PatternMaster" Association="Self.FK_SamCutAssignmentMaster_PatternMaster">
+            <End Role="PatternMaster" EntitySet="PatternMaster" />
+            <End Role="SamCutAssignmentMaster" EntitySet="SamCutAssignmentMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SamCutAssignmentMaster_SampCutReqMaster" Association="Self.FK_SamCutAssignmentMaster_SampCutReqMaster">
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMaster" />
+            <End Role="SamCutAssignmentMaster" EntitySet="SamCutAssignmentMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SamCutPlanPriority_SamCutAssignmentMaster" Association="Self.FK_SamCutPlanPriority_SamCutAssignmentMaster">
+            <End Role="SamCutAssignmentMaster" EntitySet="SamCutAssignmentMaster" />
+            <End Role="SamCutPlanPriority" EntitySet="SamCutPlanPriority" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SamDailyCutStatus_SampCutReqMaster" Association="Self.FK_SamDailyCutStatus_SampCutReqMaster">
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMaster" />
+            <End Role="SamDailyCutStatus" EntitySet="SamDailyCutStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SamDailyDeliveryStatus_SampCutReqMaster" Association="Self.FK_SamDailyDeliveryStatus_SampCutReqMaster">
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMaster" />
+            <End Role="SamDailyDeliveryStatus" EntitySet="SamDailyDeliveryStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SamDailySewStatus_SampCutReqMaster" Association="Self.FK_SamDailySewStatus_SampCutReqMaster">
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMaster" />
+            <End Role="SamDailySewStatus" EntitySet="SamDailySewStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SampCutReqMaster_BuyerMaster" Association="Self.FK_SampCutReqMaster_BuyerMaster">
+            <End Role="BuyerMaster" EntitySet="BuyerMaster" />
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SampCutReqMaster_PatternStyle" Association="Self.FK_SampCutReqMaster_PatternStyle">
+            <End Role="PatternStyle" EntitySet="PatternStyle" />
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SampCutReqMaster_PatterRefMaster" Association="Self.FK_SampCutReqMaster_PatterRefMaster">
+            <End Role="PatterRefMaster" EntitySet="PatterRefMaster" />
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SampCutReqMaster_SampCutReqMaster" Association="Self.FK_SampCutReqMaster_SampCutReqMaster">
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMaster" />
+            <End Role="SampCutReqMaster1" EntitySet="SampCutReqMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SampCutReqMaster_SampleType" Association="Self.FK_SampCutReqMaster_SampleType">
+            <End Role="SampleType" EntitySet="SampleType" />
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SamSewingPriority_SamCutAssignmentMaster" Association="Self.FK_SamSewingPriority_SamCutAssignmentMaster">
+            <End Role="SamCutAssignmentMaster" EntitySet="SamCutAssignmentMaster" />
+            <End Role="SamSewingPriority" EntitySet="SamSewingPriority" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ArtModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PatternMaster">
+          <Key>
+            <PropertyRef Name="PatternMasterID" />
+          </Key>
+          <Property Name="PatternMasterID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaternMasterName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SamCutAssignmentMasters" Relationship="ArtModel.FK_SamCutAssignmentMaster_PatternMaster" FromRole="PatternMaster" ToRole="SamCutAssignmentMaster" />
+        </EntityType>
+        <EntityContainer Name="ArtEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PatternMasters" EntityType="Self.PatternMaster" />
+          <EntitySet Name="PatterRefMasters" EntityType="ArtModel.PatterRefMaster" />
+          <EntitySet Name="PatternStyles" EntityType="ArtModel.PatternStyle" />
+          <EntitySet Name="BuyerMasters" EntityType="ArtModel.BuyerMaster" />
+          <EntitySet Name="SampleTypes" EntityType="ArtModel.SampleType" />
+          <EntitySet Name="SamCutAssignmentMasters" EntityType="ArtModel.SamCutAssignmentMaster" />
+          <AssociationSet Name="FK_SamCutAssignmentMaster_PatternMaster" Association="ArtModel.FK_SamCutAssignmentMaster_PatternMaster">
+            <End Role="PatternMaster" EntitySet="PatternMasters" />
+            <End Role="SamCutAssignmentMaster" EntitySet="SamCutAssignmentMasters" />
+          </AssociationSet>
+          <EntitySet Name="SamplingFabricMasters" EntityType="ArtModel.SamplingFabricMaster" />
+          <EntitySet Name="SamplingViews" EntityType="ArtModel.SamplingView" />
+          <EntitySet Name="SamCutPlanPriorities" EntityType="ArtModel.SamCutPlanPriority" />
+          <AssociationSet Name="FK_SamCutPlanPriority_SamCutAssignmentMaster" Association="ArtModel.FK_SamCutPlanPriority_SamCutAssignmentMaster">
+            <End Role="SamCutAssignmentMaster" EntitySet="SamCutAssignmentMasters" />
+            <End Role="SamCutPlanPriority" EntitySet="SamCutPlanPriorities" />
+          </AssociationSet>
+          <EntitySet Name="SamSewingPriorities" EntityType="ArtModel.SamSewingPriority" />
+          <AssociationSet Name="FK_SamSewingPriority_SamCutAssignmentMaster" Association="ArtModel.FK_SamSewingPriority_SamCutAssignmentMaster">
+            <End Role="SamCutAssignmentMaster" EntitySet="SamCutAssignmentMasters" />
+            <End Role="SamSewingPriority" EntitySet="SamSewingPriorities" />
+          </AssociationSet>
+          <EntitySet Name="SampCutReqMasters" EntityType="ArtModel.SampCutReqMaster" />
+          <AssociationSet Name="FK_SampCutReqMaster_BuyerMaster" Association="ArtModel.FK_SampCutReqMaster_BuyerMaster">
+            <End Role="BuyerMaster" EntitySet="BuyerMasters" />
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SampCutReqMaster_PatternStyle" Association="ArtModel.FK_SampCutReqMaster_PatternStyle">
+            <End Role="PatternStyle" EntitySet="PatternStyles" />
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SampCutReqMaster_PatterRefMaster" Association="ArtModel.FK_SampCutReqMaster_PatterRefMaster">
+            <End Role="PatterRefMaster" EntitySet="PatterRefMasters" />
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SamCutAssignmentMaster_SampCutReqMaster" Association="ArtModel.FK_SamCutAssignmentMaster_SampCutReqMaster">
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMasters" />
+            <End Role="SamCutAssignmentMaster" EntitySet="SamCutAssignmentMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SampCutReqMaster_SampCutReqMaster" Association="ArtModel.FK_SampCutReqMaster_SampCutReqMaster">
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMasters" />
+            <End Role="SampCutReqMaster1" EntitySet="SampCutReqMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SampCutReqMaster_SampleType" Association="ArtModel.FK_SampCutReqMaster_SampleType">
+            <End Role="SampleType" EntitySet="SampleTypes" />
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMasters" />
+          </AssociationSet>
+          <EntitySet Name="SamDailySewStatus" EntityType="ArtModel.SamDailySewStatu" />
+          <AssociationSet Name="FK_SamDailySewStatus_SampCutReqMaster" Association="ArtModel.FK_SamDailySewStatus_SampCutReqMaster">
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMasters" />
+            <End Role="SamDailySewStatu" EntitySet="SamDailySewStatus" />
+          </AssociationSet>
+          <EntitySet Name="SamDailyDeliveryStatus" EntityType="ArtModel.SamDailyDeliveryStatu" />
+          <AssociationSet Name="FK_SamDailyDeliveryStatus_SampCutReqMaster" Association="ArtModel.FK_SamDailyDeliveryStatus_SampCutReqMaster">
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMasters" />
+            <End Role="SamDailyDeliveryStatu" EntitySet="SamDailyDeliveryStatus" />
+          </AssociationSet>
+          <EntitySet Name="SamDailyCutStatus" EntityType="ArtModel.SamDailyCutStatu" />
+          <AssociationSet Name="FK_SamDailyCutStatus_SampCutReqMaster" Association="ArtModel.FK_SamDailyCutStatus_SampCutReqMaster">
+            <End Role="SampCutReqMaster" EntitySet="SampCutReqMasters" />
+            <End Role="SamDailyCutStatu" EntitySet="SamDailyCutStatus" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="PatterRefMaster">
+          <Key>
+            <PropertyRef Name="PatternRefID" />
+          </Key>
+          <Property Name="PatternRefID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatterRefNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SampCutReqMasters" Relationship="ArtModel.FK_SampCutReqMaster_PatterRefMaster" FromRole="PatterRefMaster" ToRole="SampCutReqMaster" />
+        </EntityType>
+        <EntityType Name="PatternStyle">
+          <Key>
+            <PropertyRef Name="PatternStyleID" />
+          </Key>
+          <Property Name="PatternStyleID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StyleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SampCutReqMasters" Relationship="ArtModel.FK_SampCutReqMaster_PatternStyle" FromRole="PatternStyle" ToRole="SampCutReqMaster" />
+        </EntityType>
+        <EntityType Name="BuyerMaster">
+          <Key>
+            <PropertyRef Name="BuyerID" />
+          </Key>
+          <Property Name="BuyerID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuyerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prefix" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="CurrencyCode" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="PaymentModeCode" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Agent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Allowance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AccountCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Debitaccid" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Br" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="partner_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IsActive" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="SampCutReqMasters" Relationship="ArtModel.FK_SampCutReqMaster_BuyerMaster" FromRole="BuyerMaster" ToRole="SampCutReqMaster" />
+        </EntityType>
+        <EntityType Name="SampleType">
+          <Key>
+            <PropertyRef Name="SampleTypeID" />
+          </Key>
+          <Property Name="SampleTypeID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SampleType1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CuttingTicketFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NeedApproval" Type="Boolean" />
+          <Property Name="SampleApprovalID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="NeedReApproval" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="SampCutReqMasters" Relationship="ArtModel.FK_SampCutReqMaster_SampleType" FromRole="SampleType" ToRole="SampCutReqMaster" />
+        </EntityType>
+        <EntityType Name="SamCutAssignmentMaster">
+          <Key>
+            <PropertyRef Name="CutAssignID" />
+          </Key>
+          <Property Name="CutAssignID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SampCutreqID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ReceivedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReceivedBy" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PatternMasterID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AssignedDate" Type="DateTime" Precision="3" />
+          <Property Name="SignedBYMaster" Type="Boolean" Nullable="false" />
+          <Property Name="SignedDate" Type="DateTime" Precision="3" />
+          <Property Name="CompletedDate" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MarkedCompletedBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatternReqDate" Type="DateTime" Precision="3" />
+          <Property Name="PatternCompletedDate" Type="DateTime" Precision="3" />
+          <Property Name="SamplingStatus_PK" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CompletedQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PendingReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PatternMaster" Relationship="ArtModel.FK_SamCutAssignmentMaster_PatternMaster" FromRole="SamCutAssignmentMaster" ToRole="PatternMaster" />
+          <NavigationProperty Name="SamCutPlanPriorities" Relationship="ArtModel.FK_SamCutPlanPriority_SamCutAssignmentMaster" FromRole="SamCutAssignmentMaster" ToRole="SamCutPlanPriority" />
+          <NavigationProperty Name="SamSewingPriorities" Relationship="ArtModel.FK_SamSewingPriority_SamCutAssignmentMaster" FromRole="SamCutAssignmentMaster" ToRole="SamSewingPriority" />
+          <NavigationProperty Name="SampCutReqMaster" Relationship="ArtModel.FK_SamCutAssignmentMaster_SampCutReqMaster" FromRole="SamCutAssignmentMaster" ToRole="SampCutReqMaster" />
+        </EntityType>
+        <Association Name="FK_SamCutAssignmentMaster_PatternMaster">
+          <End Type="ArtModel.PatternMaster" Role="PatternMaster" Multiplicity="0..1" />
+          <End Type="ArtModel.SamCutAssignmentMaster" Role="SamCutAssignmentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatternMaster">
+              <PropertyRef Name="PatternMasterID" />
+            </Principal>
+            <Dependent Role="SamCutAssignmentMaster">
+              <PropertyRef Name="PatternMasterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SamplingFabricMaster">
+          <Key>
+            <PropertyRef Name="FabricID" />
+          </Key>
+          <Property Name="FabricID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fabric" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ISDeleted" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SamplingView">
+          <Key>
+            <PropertyRef Name="ReceivedDate" />
+            <PropertyRef Name="ReceivedBy" />
+            <PropertyRef Name="SignedBYMaster" />
+            <PropertyRef Name="PaternMasterName" />
+            <PropertyRef Name="PatternMasterID" />
+            <PropertyRef Name="SampleType" />
+            <PropertyRef Name="BuyerID" />
+            <PropertyRef Name="SampleTypeID" />
+            <PropertyRef Name="IsTeckPack" />
+          </Key>
+          <Property Name="ReqNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fabric" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StyleDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BuyerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatterRefNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StyleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceivedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReceivedBy" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SignedBYMaster" Type="Boolean" Nullable="false" />
+          <Property Name="SignedDate" Type="DateTime" Precision="3" />
+          <Property Name="CompletedDate" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MarkedCompletedBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaternMasterName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatternMasterID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="SampleType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SampleRequiredDate" Type="DateTime" Precision="3" />
+          <Property Name="AssignedDate" Type="DateTime" Precision="3" />
+          <Property Name="PatternReqDate" Type="DateTime" Precision="3" />
+          <Property Name="BuyerID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="SampleTypeID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="CompletedQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PendingReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PatternCompletedDate" Type="DateTime" Precision="3" />
+          <Property Name="SizeDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Expr1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsTeckPack" Type="Boolean" Nullable="false" />
+          <Property Name="IsReceived" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SamCutPlanPriority">
+          <Key>
+            <PropertyRef Name="SamCutPriorityID" />
+          </Key>
+          <Property Name="SamCutPriorityID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlanDate" Type="DateTime" Precision="3" />
+          <Property Name="CutAssignID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Priority" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ToCutQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ActualCut" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="SamCutAssignmentMaster" Relationship="ArtModel.FK_SamCutPlanPriority_SamCutAssignmentMaster" FromRole="SamCutPlanPriority" ToRole="SamCutAssignmentMaster" />
+        </EntityType>
+        <Association Name="FK_SamCutPlanPriority_SamCutAssignmentMaster">
+          <End Type="ArtModel.SamCutAssignmentMaster" Role="SamCutAssignmentMaster" Multiplicity="0..1" />
+          <End Type="ArtModel.SamCutPlanPriority" Role="SamCutPlanPriority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SamCutAssignmentMaster">
+              <PropertyRef Name="CutAssignID" />
+            </Principal>
+            <Dependent Role="SamCutPlanPriority">
+              <PropertyRef Name="CutAssignID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SamSewingPriority">
+          <Key>
+            <PropertyRef Name="SamSewPriorityID" />
+          </Key>
+          <Property Name="SamSewPriorityID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlanDate" Type="DateTime" Precision="3" />
+          <Property Name="CutAssignID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Priority" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ToSewQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ActualSew" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="SamCutAssignmentMaster" Relationship="ArtModel.FK_SamSewingPriority_SamCutAssignmentMaster" FromRole="SamSewingPriority" ToRole="SamCutAssignmentMaster" />
+        </EntityType>
+        <Association Name="FK_SamSewingPriority_SamCutAssignmentMaster">
+          <End Type="ArtModel.SamCutAssignmentMaster" Role="SamCutAssignmentMaster" Multiplicity="0..1" />
+          <End Type="ArtModel.SamSewingPriority" Role="SamSewingPriority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SamCutAssignmentMaster">
+              <PropertyRef Name="CutAssignID" />
+            </Principal>
+            <Dependent Role="SamSewingPriority">
+              <PropertyRef Name="CutAssignID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SampCutReqMaster">
+          <Key>
+            <PropertyRef Name="SampCutreqID" />
+          </Key>
+          <Property Name="SampCutreqID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReqNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fabric" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StyleDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BuyerID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PatternRefID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PatternStyleID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SampleTypeID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SampleRequiredDate" Type="DateTime" Precision="3" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SizeDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="MarkCompleted" Type="Boolean" />
+          <Property Name="MarkedCompletedDate" Type="DateTime" Precision="3" />
+          <Property Name="MarkCompletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsTeckPack" Type="Boolean" Nullable="false" />
+          <Property Name="IsReceived" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Size1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Size2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Size3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Size4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Size5" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Size6" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Qty1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Qty2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Qty3" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Qty4" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Qty5" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Qty6" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size1CutQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size2CutQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size3CutQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size4CutQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size5CutQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size6CutQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size1SewQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size2SewQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size3SewQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size4SewQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size5SewQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size6SewQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DateofAction" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BuyerMaster" Relationship="ArtModel.FK_SampCutReqMaster_BuyerMaster" FromRole="SampCutReqMaster" ToRole="BuyerMaster" />
+          <NavigationProperty Name="PatternStyle" Relationship="ArtModel.FK_SampCutReqMaster_PatternStyle" FromRole="SampCutReqMaster" ToRole="PatternStyle" />
+          <NavigationProperty Name="PatterRefMaster" Relationship="ArtModel.FK_SampCutReqMaster_PatterRefMaster" FromRole="SampCutReqMaster" ToRole="PatterRefMaster" />
+          <NavigationProperty Name="SamCutAssignmentMasters" Relationship="ArtModel.FK_SamCutAssignmentMaster_SampCutReqMaster" FromRole="SampCutReqMaster" ToRole="SamCutAssignmentMaster" />
+          <NavigationProperty Name="SampCutReqMaster1" Relationship="ArtModel.FK_SampCutReqMaster_SampCutReqMaster" FromRole="SampCutReqMaster" ToRole="SampCutReqMaster1" />
+          <NavigationProperty Name="SampCutReqMaster2" Relationship="ArtModel.FK_SampCutReqMaster_SampCutReqMaster" FromRole="SampCutReqMaster1" ToRole="SampCutReqMaster" />
+          <NavigationProperty Name="SampleType" Relationship="ArtModel.FK_SampCutReqMaster_SampleType" FromRole="SampCutReqMaster" ToRole="SampleType" />
+          <NavigationProperty Name="SamDailySewStatus" Relationship="ArtModel.FK_SamDailySewStatus_SampCutReqMaster" FromRole="SampCutReqMaster" ToRole="SamDailySewStatu" />
+          <Property Name="Size1DeliveredQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size2DeliveredQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size3DeliveredQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size4DeliveredQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size5DeliveredQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size6DeliveredQty" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="SamDailyDeliveryStatus" Relationship="ArtModel.FK_SamDailyDeliveryStatus_SampCutReqMaster" FromRole="SampCutReqMaster" ToRole="SamDailyDeliveryStatu" />
+          <NavigationProperty Name="SamDailyCutStatus" Relationship="ArtModel.FK_SamDailyCutStatus_SampCutReqMaster" FromRole="SampCutReqMaster" ToRole="SamDailyCutStatu" />
+        </EntityType>
+        <Association Name="FK_SampCutReqMaster_BuyerMaster">
+          <End Type="ArtModel.BuyerMaster" Role="BuyerMaster" Multiplicity="0..1" />
+          <End Type="ArtModel.SampCutReqMaster" Role="SampCutReqMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuyerMaster">
+              <PropertyRef Name="BuyerID" />
+            </Principal>
+            <Dependent Role="SampCutReqMaster">
+              <PropertyRef Name="BuyerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SampCutReqMaster_PatternStyle">
+          <End Type="ArtModel.PatternStyle" Role="PatternStyle" Multiplicity="0..1" />
+          <End Type="ArtModel.SampCutReqMaster" Role="SampCutReqMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatternStyle">
+              <PropertyRef Name="PatternStyleID" />
+            </Principal>
+            <Dependent Role="SampCutReqMaster">
+              <PropertyRef Name="PatternStyleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SampCutReqMaster_PatterRefMaster">
+          <End Type="ArtModel.PatterRefMaster" Role="PatterRefMaster" Multiplicity="0..1" />
+          <End Type="ArtModel.SampCutReqMaster" Role="SampCutReqMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatterRefMaster">
+              <PropertyRef Name="PatternRefID" />
+            </Principal>
+            <Dependent Role="SampCutReqMaster">
+              <PropertyRef Name="PatternRefID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SamCutAssignmentMaster_SampCutReqMaster">
+          <End Type="ArtModel.SampCutReqMaster" Role="SampCutReqMaster" Multiplicity="1" />
+          <End Type="ArtModel.SamCutAssignmentMaster" Role="SamCutAssignmentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SampCutReqMaster">
+              <PropertyRef Name="SampCutreqID" />
+            </Principal>
+            <Dependent Role="SamCutAssignmentMaster">
+              <PropertyRef Name="SampCutreqID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SampCutReqMaster_SampCutReqMaster">
+          <End Type="ArtModel.SampCutReqMaster" Role="SampCutReqMaster" Multiplicity="1" />
+          <End Type="ArtModel.SampCutReqMaster" Role="SampCutReqMaster1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SampCutReqMaster">
+              <PropertyRef Name="SampCutreqID" />
+            </Principal>
+            <Dependent Role="SampCutReqMaster1">
+              <PropertyRef Name="SampCutreqID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SampCutReqMaster_SampleType">
+          <End Type="ArtModel.SampleType" Role="SampleType" Multiplicity="0..1" />
+          <End Type="ArtModel.SampCutReqMaster" Role="SampCutReqMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SampleType">
+              <PropertyRef Name="SampleTypeID" />
+            </Principal>
+            <Dependent Role="SampCutReqMaster">
+              <PropertyRef Name="SampleTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SamDailySewStatu">
+          <Key>
+            <PropertyRef Name="SamSewingDailyId" />
+          </Key>
+          <Property Name="SamSewingDailyId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SampCutreqID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size1SewtQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size2SewQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size3SewQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size4SewQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size5SewQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size6SewQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DateofAction" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SampCutReqMaster" Relationship="ArtModel.FK_SamDailySewStatus_SampCutReqMaster" FromRole="SamDailySewStatu" ToRole="SampCutReqMaster" />
+        </EntityType>
+        <Association Name="FK_SamDailySewStatus_SampCutReqMaster">
+          <End Type="ArtModel.SampCutReqMaster" Role="SampCutReqMaster" Multiplicity="0..1" />
+          <End Type="ArtModel.SamDailySewStatu" Role="SamDailySewStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SampCutReqMaster">
+              <PropertyRef Name="SampCutreqID" />
+            </Principal>
+            <Dependent Role="SamDailySewStatu">
+              <PropertyRef Name="SampCutreqID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SamDailyDeliveryStatu">
+          <Key>
+            <PropertyRef Name="SamDeliveryDailyId" />
+          </Key>
+          <Property Name="SamDeliveryDailyId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SampCutreqID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size1DeliveryQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size2DeliveryQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size3DeliveryQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size4DeliveryQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size5DeliveryQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size6DeliveryQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DateofAction" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SampCutReqMaster" Relationship="ArtModel.FK_SamDailyDeliveryStatus_SampCutReqMaster" FromRole="SamDailyDeliveryStatu" ToRole="SampCutReqMaster" />
+        </EntityType>
+        <Association Name="FK_SamDailyDeliveryStatus_SampCutReqMaster">
+          <End Type="ArtModel.SampCutReqMaster" Role="SampCutReqMaster" Multiplicity="0..1" />
+          <End Type="ArtModel.SamDailyDeliveryStatu" Role="SamDailyDeliveryStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SampCutReqMaster">
+              <PropertyRef Name="SampCutreqID" />
+            </Principal>
+            <Dependent Role="SamDailyDeliveryStatu">
+              <PropertyRef Name="SampCutreqID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SamDailyCutStatu">
+          <Key>
+            <PropertyRef Name="SamCutttingDailyId" />
+          </Key>
+          <Property Name="SamCutttingDailyId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SampCutreqID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size1CutQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size2CutQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size3CutQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size4CutQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size5CutQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Size6CutQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DateofAction" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SampCutReqMaster" Relationship="ArtModel.FK_SamDailyCutStatus_SampCutReqMaster" FromRole="SamDailyCutStatu" ToRole="SampCutReqMaster" />
+        </EntityType>
+        <Association Name="FK_SamDailyCutStatus_SampCutReqMaster">
+          <End Type="ArtModel.SampCutReqMaster" Role="SampCutReqMaster" Multiplicity="0..1" />
+          <End Type="ArtModel.SamDailyCutStatu" Role="SamDailyCutStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SampCutReqMaster">
+              <PropertyRef Name="SampCutreqID" />
+            </Principal>
+            <Dependent Role="SamDailyCutStatu">
+              <PropertyRef Name="SampCutreqID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ArtModelStoreContainer" CdmEntityContainer="ArtEntities">
+          <EntitySetMapping Name="PatternMasters">
+            <EntityTypeMapping TypeName="ArtModel.PatternMaster">
+              <MappingFragment StoreEntitySet="PatternMaster">
+                <ScalarProperty Name="PatternMasterID" ColumnName="PatternMasterID" />
+                <ScalarProperty Name="PaternMasterName" ColumnName="PaternMasterName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatterRefMasters">
+            <EntityTypeMapping TypeName="ArtModel.PatterRefMaster">
+              <MappingFragment StoreEntitySet="PatterRefMaster">
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="PatterRefNum" ColumnName="PatterRefNum" />
+                <ScalarProperty Name="PatternRefID" ColumnName="PatternRefID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatternStyles">
+            <EntityTypeMapping TypeName="ArtModel.PatternStyle">
+              <MappingFragment StoreEntitySet="PatternStyle">
+                <ScalarProperty Name="StyleName" ColumnName="StyleName" />
+                <ScalarProperty Name="PatternStyleID" ColumnName="PatternStyleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BuyerMasters">
+            <EntityTypeMapping TypeName="ArtModel.BuyerMaster">
+              <MappingFragment StoreEntitySet="BuyerMaster">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+                <ScalarProperty Name="Br" ColumnName="Br" />
+                <ScalarProperty Name="Debitaccid" ColumnName="Debitaccid" />
+                <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+                <ScalarProperty Name="Allowance" ColumnName="Allowance" />
+                <ScalarProperty Name="Agent" ColumnName="Agent" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="PaymentModeCode" ColumnName="PaymentModeCode" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
+                <ScalarProperty Name="BuyerID" ColumnName="BuyerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SampleTypes">
+            <EntityTypeMapping TypeName="ArtModel.SampleType">
+              <MappingFragment StoreEntitySet="SampleType">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="NeedReApproval" ColumnName="NeedReApproval" />
+                <ScalarProperty Name="SampleApprovalID" ColumnName="SampleApprovalID" />
+                <ScalarProperty Name="NeedApproval" ColumnName="NeedApproval" />
+                <ScalarProperty Name="CuttingTicketFrom" ColumnName="CuttingTicketFrom" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SampleType1" ColumnName="SampleType" />
+                <ScalarProperty Name="SampleTypeID" ColumnName="SampleTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SamCutAssignmentMasters">
+            <EntityTypeMapping TypeName="ArtModel.SamCutAssignmentMaster">
+              <MappingFragment StoreEntitySet="SamCutAssignmentMaster">
+                <ScalarProperty Name="PendingReason" ColumnName="PendingReason" />
+                <ScalarProperty Name="CompletedQty" ColumnName="CompletedQty" />
+                <ScalarProperty Name="SamplingStatus_PK" ColumnName="SamplingStatus_PK" />
+                <ScalarProperty Name="PatternCompletedDate" ColumnName="PatternCompletedDate" />
+                <ScalarProperty Name="PatternReqDate" ColumnName="PatternReqDate" />
+                <ScalarProperty Name="MarkedCompletedBY" ColumnName="MarkedCompletedBY" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="SignedDate" ColumnName="SignedDate" />
+                <ScalarProperty Name="SignedBYMaster" ColumnName="SignedBYMaster" />
+                <ScalarProperty Name="AssignedDate" ColumnName="AssignedDate" />
+                <ScalarProperty Name="PatternMasterID" ColumnName="PatternMasterID" />
+                <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+                <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+                <ScalarProperty Name="SampCutreqID" ColumnName="SampCutreqID" />
+                <ScalarProperty Name="CutAssignID" ColumnName="CutAssignID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SamplingFabricMasters">
+            <EntityTypeMapping TypeName="ArtModel.SamplingFabricMaster">
+              <MappingFragment StoreEntitySet="SamplingFabricMaster">
+                <ScalarProperty Name="ISDeleted" ColumnName="ISDeleted" />
+                <ScalarProperty Name="Fabric" ColumnName="Fabric" />
+                <ScalarProperty Name="FabricID" ColumnName="FabricID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SamplingViews">
+            <EntityTypeMapping TypeName="ArtModel.SamplingView">
+              <MappingFragment StoreEntitySet="SamplingView">
+                <ScalarProperty Name="IsReceived" ColumnName="IsReceived" />
+                <ScalarProperty Name="IsTeckPack" ColumnName="IsTeckPack" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="SizeDetail" ColumnName="SizeDetail" />
+                <ScalarProperty Name="PatternCompletedDate" ColumnName="PatternCompletedDate" />
+                <ScalarProperty Name="PendingReason" ColumnName="PendingReason" />
+                <ScalarProperty Name="CompletedQty" ColumnName="CompletedQty" />
+                <ScalarProperty Name="SampleTypeID" ColumnName="SampleTypeID" />
+                <ScalarProperty Name="BuyerID" ColumnName="BuyerID" />
+                <ScalarProperty Name="PatternReqDate" ColumnName="PatternReqDate" />
+                <ScalarProperty Name="AssignedDate" ColumnName="AssignedDate" />
+                <ScalarProperty Name="SampleRequiredDate" ColumnName="SampleRequiredDate" />
+                <ScalarProperty Name="SampleType" ColumnName="SampleType" />
+                <ScalarProperty Name="PatternMasterID" ColumnName="PatternMasterID" />
+                <ScalarProperty Name="PaternMasterName" ColumnName="PaternMasterName" />
+                <ScalarProperty Name="MarkedCompletedBY" ColumnName="MarkedCompletedBY" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="SignedDate" ColumnName="SignedDate" />
+                <ScalarProperty Name="SignedBYMaster" ColumnName="SignedBYMaster" />
+                <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+                <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="StyleName" ColumnName="StyleName" />
+                <ScalarProperty Name="PatterRefNum" ColumnName="PatterRefNum" />
+                <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
+                <ScalarProperty Name="StyleDescription" ColumnName="StyleDescription" />
+                <ScalarProperty Name="Fabric" ColumnName="Fabric" />
+                <ScalarProperty Name="ReqNum" ColumnName="ReqNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SamCutPlanPriorities">
+            <EntityTypeMapping TypeName="ArtModel.SamCutPlanPriority">
+              <MappingFragment StoreEntitySet="SamCutPlanPriority">
+                <ScalarProperty Name="ActualCut" ColumnName="ActualCut" />
+                <ScalarProperty Name="ToCutQty" ColumnName="ToCutQty" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="CutAssignID" ColumnName="CutAssignID" />
+                <ScalarProperty Name="PlanDate" ColumnName="PlanDate" />
+                <ScalarProperty Name="SamCutPriorityID" ColumnName="SamCutPriorityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SamSewingPriorities">
+            <EntityTypeMapping TypeName="ArtModel.SamSewingPriority">
+              <MappingFragment StoreEntitySet="SamSewingPriority">
+                <ScalarProperty Name="ActualSew" ColumnName="ActualSew" />
+                <ScalarProperty Name="ToSewQty" ColumnName="ToSewQty" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="CutAssignID" ColumnName="CutAssignID" />
+                <ScalarProperty Name="PlanDate" ColumnName="PlanDate" />
+                <ScalarProperty Name="SamSewPriorityID" ColumnName="SamSewPriorityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SampCutReqMasters">
+            <EntityTypeMapping TypeName="ArtModel.SampCutReqMaster">
+              <MappingFragment StoreEntitySet="SampCutReqMaster">
+                <ScalarProperty Name="Size6DeliveredQty" ColumnName="Size6DeliveredQty" />
+                <ScalarProperty Name="Size5DeliveredQty" ColumnName="Size5DeliveredQty" />
+                <ScalarProperty Name="Size4DeliveredQty" ColumnName="Size4DeliveredQty" />
+                <ScalarProperty Name="Size3DeliveredQty" ColumnName="Size3DeliveredQty" />
+                <ScalarProperty Name="Size2DeliveredQty" ColumnName="Size2DeliveredQty" />
+                <ScalarProperty Name="Size1DeliveredQty" ColumnName="Size1DeliveredQty" />
+                <ScalarProperty Name="DateofAction" ColumnName="DateofAction" />
+                <ScalarProperty Name="Size6SewQty" ColumnName="Size6SewQty" />
+                <ScalarProperty Name="Size5SewQty" ColumnName="Size5SewQty" />
+                <ScalarProperty Name="Size4SewQty" ColumnName="Size4SewQty" />
+                <ScalarProperty Name="Size3SewQty" ColumnName="Size3SewQty" />
+                <ScalarProperty Name="Size2SewQty" ColumnName="Size2SewQty" />
+                <ScalarProperty Name="Size1SewQty" ColumnName="Size1SewQty" />
+                <ScalarProperty Name="Size6CutQty" ColumnName="Size6CutQty" />
+                <ScalarProperty Name="Size5CutQty" ColumnName="Size5CutQty" />
+                <ScalarProperty Name="Size4CutQty" ColumnName="Size4CutQty" />
+                <ScalarProperty Name="Size3CutQty" ColumnName="Size3CutQty" />
+                <ScalarProperty Name="Size2CutQty" ColumnName="Size2CutQty" />
+                <ScalarProperty Name="Size1CutQty" ColumnName="Size1CutQty" />
+                <ScalarProperty Name="Qty6" ColumnName="Qty6" />
+                <ScalarProperty Name="Qty5" ColumnName="Qty5" />
+                <ScalarProperty Name="Qty4" ColumnName="Qty4" />
+                <ScalarProperty Name="Qty3" ColumnName="Qty3" />
+                <ScalarProperty Name="Qty2" ColumnName="Qty2" />
+                <ScalarProperty Name="Qty1" ColumnName="Qty1" />
+                <ScalarProperty Name="Size6" ColumnName="Size6" />
+                <ScalarProperty Name="Size5" ColumnName="Size5" />
+                <ScalarProperty Name="Size4" ColumnName="Size4" />
+                <ScalarProperty Name="Size3" ColumnName="Size3" />
+                <ScalarProperty Name="Size2" ColumnName="Size2" />
+                <ScalarProperty Name="Size1" ColumnName="Size1" />
+                <ScalarProperty Name="IsReceived" ColumnName="IsReceived" />
+                <ScalarProperty Name="IsTeckPack" ColumnName="IsTeckPack" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="MarkCompletedBy" ColumnName="MarkCompletedBy" />
+                <ScalarProperty Name="MarkedCompletedDate" ColumnName="MarkedCompletedDate" />
+                <ScalarProperty Name="MarkCompleted" ColumnName="MarkCompleted" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="SizeDetail" ColumnName="SizeDetail" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="SampleRequiredDate" ColumnName="SampleRequiredDate" />
+                <ScalarProperty Name="SampleTypeID" ColumnName="SampleTypeID" />
+                <ScalarProperty Name="PatternStyleID" ColumnName="PatternStyleID" />
+                <ScalarProperty Name="PatternRefID" ColumnName="PatternRefID" />
+                <ScalarProperty Name="BuyerID" ColumnName="BuyerID" />
+                <ScalarProperty Name="StyleDescription" ColumnName="StyleDescription" />
+                <ScalarProperty Name="Fabric" ColumnName="Fabric" />
+                <ScalarProperty Name="ReqNum" ColumnName="ReqNum" />
+                <ScalarProperty Name="SampCutreqID" ColumnName="SampCutreqID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SamDailySewStatus">
+            <EntityTypeMapping TypeName="ArtModel.SamDailySewStatu">
+              <MappingFragment StoreEntitySet="SamDailySewStatus">
+                <ScalarProperty Name="DateofAction" ColumnName="DateofAction" />
+                <ScalarProperty Name="Size6SewQty" ColumnName="Size6SewQty" />
+                <ScalarProperty Name="Size5SewQty" ColumnName="Size5SewQty" />
+                <ScalarProperty Name="Size4SewQty" ColumnName="Size4SewQty" />
+                <ScalarProperty Name="Size3SewQty" ColumnName="Size3SewQty" />
+                <ScalarProperty Name="Size2SewQty" ColumnName="Size2SewQty" />
+                <ScalarProperty Name="Size1SewtQty" ColumnName="Size1SewtQty" />
+                <ScalarProperty Name="SampCutreqID" ColumnName="SampCutreqID" />
+                <ScalarProperty Name="SamSewingDailyId" ColumnName="SamSewingDailyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SamDailyDeliveryStatus">
+            <EntityTypeMapping TypeName="ArtModel.SamDailyDeliveryStatu">
+              <MappingFragment StoreEntitySet="SamDailyDeliveryStatus">
+                <ScalarProperty Name="DateofAction" ColumnName="DateofAction" />
+                <ScalarProperty Name="Size6DeliveryQty" ColumnName="Size6DeliveryQty" />
+                <ScalarProperty Name="Size5DeliveryQty" ColumnName="Size5DeliveryQty" />
+                <ScalarProperty Name="Size4DeliveryQty" ColumnName="Size4DeliveryQty" />
+                <ScalarProperty Name="Size3DeliveryQty" ColumnName="Size3DeliveryQty" />
+                <ScalarProperty Name="Size2DeliveryQty" ColumnName="Size2DeliveryQty" />
+                <ScalarProperty Name="Size1DeliveryQty" ColumnName="Size1DeliveryQty" />
+                <ScalarProperty Name="SampCutreqID" ColumnName="SampCutreqID" />
+                <ScalarProperty Name="SamDeliveryDailyId" ColumnName="SamDeliveryDailyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SamDailyCutStatus">
+            <EntityTypeMapping TypeName="ArtModel.SamDailyCutStatu">
+              <MappingFragment StoreEntitySet="SamDailyCutStatus">
+                <ScalarProperty Name="DateofAction" ColumnName="DateofAction" />
+                <ScalarProperty Name="Size6CutQty" ColumnName="Size6CutQty" />
+                <ScalarProperty Name="Size5CutQty" ColumnName="Size5CutQty" />
+                <ScalarProperty Name="Size4CutQty" ColumnName="Size4CutQty" />
+                <ScalarProperty Name="Size3CutQty" ColumnName="Size3CutQty" />
+                <ScalarProperty Name="Size2CutQty" ColumnName="Size2CutQty" />
+                <ScalarProperty Name="Size1CutQty" ColumnName="Size1CutQty" />
+                <ScalarProperty Name="SampCutreqID" ColumnName="SampCutreqID" />
+                <ScalarProperty Name="SamCutttingDailyId" ColumnName="SamCutttingDailyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

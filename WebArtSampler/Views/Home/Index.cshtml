@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ArtSam</h1>
+    <p class="lead">ArtSam is a Web Portal to manage the Sample request and request flow and status .  Being a Part of WEBART the data in ArtSam is closely bined with WebArt.</p>
+    <p><a href="http://erp.atracorealtime.net:1933" class="btn btn-primary btn-lg">Learn more on WebArt &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>PD/Merchandisers</h2>
+        <p>
+            Merchandisers can create Samples request ,new styles, references etc. which will be forwarded to the sampling dept
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Merchandiser")"   >Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Sampling</h2>
+        <p>In Sampling Section Requests from the Merchandisers are verfied marked as Viewed and Then assigned to a Pattern Master,Also once the garment is made it will be marked as Completed</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Sampling")" >Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Masters</h2>
+        <p>Cut Request from the Merchandisers which are assigned by the Sampling section is signed by the Masters as receipt and marked as completed also</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "MastersAction")">Learn more &raquo;</a></p>
+    </div>
+</div>

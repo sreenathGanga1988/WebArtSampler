@@ -1,0 +1,149 @@
+﻿@model IEnumerable<WebArtSampler.Models.SamCutAssignmentMaster>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cutting Status</h2>
+@*<script src="~/Scripts/jquery.table2excel.js"></script>
+<script src="~/Scripts/CustomJQuery.js"></script>*@
+
+
+@Html.ActionLink("Show Cutting Status", "GetCuttingofADate")
+
+<table class="table table-striped table-bordered table-hover table-responsive exporttable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SampCutReqMaster.ReqNum)
+        </th>
+        <th>
+            @Html.DisplayName("Atc/Ref");
+
+        </th>
+        <th>
+            @Html.DisplayName("Style");
+
+        </th>
+     
+        <th>
+
+            @Html.DisplayNameFor(model => model.ReceivedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceivedBy)
+
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.PatternReqDate)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.SignedBYMaster)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.SignedDate)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.CompletedDate)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.Remark)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.MarkedCompletedBY)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.PatternMaster.PaternMasterName)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.SampCutReqMaster.Qty)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.CompletedQty)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.TotalCut)
+        </th>
+
+        <th>
+
+            @Html.DisplayNameFor(model => model.Balancetocut)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SampCutReqMaster.ReqNum)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.SampCutReqMaster.PatterRefMaster.PatterRefNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SampCutReqMaster.PatternStyle.StyleName)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceivedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceivedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatternReqDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SignedBYMaster)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SignedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarkedCompletedBY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatternMaster.PaternMasterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SampCutReqMaster.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletedQty)
+            </td>
+
+            <td>
+
+                @Html.DisplayFor(modelItem => item.TotalCut)
+            </td>
+
+            <td>
+
+                @Html.DisplayFor(modelItem => item.Balancetocut)
+            </td>
+            <td>
+                @Html.ActionLink("Update Cutting", "UpdateCut", new { id = item.CutAssignID }) |
+               
+            </td>
+        </tr>
+    }
+
+</table>

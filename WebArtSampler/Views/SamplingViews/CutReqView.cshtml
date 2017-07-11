@@ -1,0 +1,369 @@
+﻿@model WebArtSampler.Models.CutreQViewModel
+
+@{
+    ViewBag.Title = "CutReqView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CutReqView</h2>
+
+<div>
+    <h4>CutreQViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SampCutreqID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SampCutreqID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReqNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReqNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fabric)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fabric)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StyleDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StyleDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SampleRequiredDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SampleRequiredDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SizeDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SizeDetail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Qty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarkCompleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarkCompleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarkedCompletedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarkedCompletedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarkCompletedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarkCompletedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsTeckPack)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsTeckPack)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsReceived)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsReceived)
+        </dd>
+
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.DateofAction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateofAction)
+        </dd>
+
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceivedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceivedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceivedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceivedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SignedBYMaster)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SignedBYMaster)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SignedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SignedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignmentRemark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignmentRemark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarkedCompletedBY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarkedCompletedBY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PatternReqDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatternReqDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PatternCompletedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatternCompletedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletedQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletedQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PendingReason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PendingReason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pastternmaster)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pastternmaster)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BuyerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuyerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patternrefernce)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patternrefernce)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SampleType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SampleType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PatternStyle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatternStyle)
+        </dd>
+        
+    </dl>
+
+
+    <div class="col-md-10">
+        <table>
+            <tr>
+                <td>Size</td>
+                <td>@Html.EditorFor(model => model.Size1, new { htmlAttributes = new { @class = "sizecolmn form-control", style = "width:80px" } })</td>
+                <td>@Html.EditorFor(model => model.Size2, new { htmlAttributes = new { @class = "sizecolmn form-control", style = "width:80px" } })</td>
+                <td>@Html.EditorFor(model => model.Size3, new { htmlAttributes = new { @class = "sizecolmn form-control", style = "width:80px" } })</td>
+                <td>@Html.EditorFor(model => model.Size4, new { htmlAttributes = new { @class = "sizecolmn form-control", style = "width:80px" } })</td>
+                <td>@Html.EditorFor(model => model.Size5, new { htmlAttributes = new { @class = "sizecolmn form-control", style = "width:80px" } })</td>
+                <td>@Html.EditorFor(model => model.Size6, new { htmlAttributes = new { @class = "sizecolmn form-control", style = "width:80px" } })</td>
+            </tr>
+            <tr>
+                <td>Qty</td>
+                <td>
+                    @Html.EditorFor(model => model.Qty1, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })
+
+                </td>
+
+                <td>@Html.EditorFor(model => model.Qty2, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Qty3, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Qty4, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Qty5, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Qty6, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+            </tr>
+            <tr>
+                <td> Cut</td>
+                <td>
+                    @Html.EditorFor(model => model.Size1CutQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })
+
+                </td>
+
+                <td>@Html.EditorFor(model => model.Size2CutQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Size3CutQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Size4CutQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Size5CutQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Size6CutQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+            </tr>
+            <tr>
+                <td>Sew</td>
+                <td>
+                    @Html.EditorFor(model => model.Size1SewQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })
+
+                </td>
+
+                <td>@Html.EditorFor(model => model.Size2SewQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Size3SewQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Size4SewQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Size5SewQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Size6SewQty, new { htmlAttributes = new { @class = "Qtycolmn form-control", style = "width:80px" } })</td>
+            </tr>
+            <tr>
+                <td>Delivered</td>
+                <td>
+                    @Html.EditorFor(model => model.Size1DeliveredQty, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })
+
+                </td>
+
+                <td>@Html.EditorFor(model => model.Size2DeliveredQty, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Size3DeliveredQty, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Size4DeliveredQty, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Size5DeliveredQty, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+
+                <td>@Html.EditorFor(model => model.Size6DeliveredQty, new { htmlAttributes = new { @class = "NewQtycolmn form-control", style = "width:80px" } })</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,115 @@
+﻿@model WebArtSampler.Models.RequestViewModel
+@{
+    ViewBag.Title = "Complete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mark Complete</h2>
+
+<h3>Are you sure you want to Mark this Complete?</h3>
+<div>
+    <h4>SampCutReqMaster</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReqNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReqNum)
+            
+        </dd>
+
+        <dt>
+            Fabric
+            @Html.DisplayName("Fabric")
+        </dt>
+
+        <dd>
+            
+            @Html.DisplayFor(model => model.Fabric)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Sample Required Date")
+         
+          
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SampleRequiredDate)
+        
+        </dd>
+
+        <dt>
+          
+            @Html.DisplayName("Added Date")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddedDate)
+          
+        </dd>
+
+        <dt>
+            @Html.DisplayName("AddedBy")
+        
+        
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddedBy)
+          
+        </dd>
+
+        <dt>
+            
+            @Html.DisplayName("Buyer Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuyerName1)
+          
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Stylename1")
+          
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stylename1)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("RefNum#")
+        
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatterRefNum1)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Sample Type Name")
+          
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SampleTypename1)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("CompleteDetail", "SampCutReqMasters"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Complete" class="btn btn-default" /> |
+            @Html.Hidden("id", Model.SampCutreqID)
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+

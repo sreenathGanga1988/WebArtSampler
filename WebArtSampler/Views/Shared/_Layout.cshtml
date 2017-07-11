@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - WebArt Sampler</title>
+
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Controls/chosen_v1.7.0/chosen.css" rel="stylesheet" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/Jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/Custom")
+ 
+
+    <script src="~/Controls/chosen_v1.7.0/chosen.jquery.js"></script>
+    <script src="~/Controls/chosen_v1.7.0/docsupport/init.js"></script>
+    <script src="~/Controls/chosen_v1.7.0/docsupport/prism.js"></script>
+    @RenderSection("scripts", required: false)
+   
+    <script>
+    $(function () {
+        $(".datepicker").datepicker({
+
+            dateFormat: "dd-MM-yy",
+            timeFormat: 'HH:mm' 
+        });
+
+        $(".chosen-select").chosen();
+    });
+    </script>
+
+
+    
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("ArtSam", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                 
+                    <li>@Html.ActionLink("Home", "Index", new { area = "", controller = "Home" })</li>
+                    <li>@Html.ActionLink("About", "About", new { area = "", controller = "Home" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", new { area = "", controller = "Home" })</li>
+                    <li> @Html.ActionLink("Signout", "SignOut", "Account")</li>
+
+</ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ArtSam</p>
+        </footer>
+    </div>
+    <div>
+       
+    </div>
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")*@
+   
+</body>
+</html>

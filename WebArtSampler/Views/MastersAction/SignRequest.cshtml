@@ -1,0 +1,46 @@
+﻿@model WebArtSampler.Models.RequestSignModel
+@{
+    ViewBag.Title = "SignRequest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SignRequest</h2>
+
+
+@using (Html.BeginForm("EditSignRequest", "MastersAction"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CutAssignID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CutAssignID, "Req#", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+           
+         
+                @*@Html.DropDownListFor(model => model.CutAssignID, (SelectList)ViewBag.CutAssignID, "--Select One--", htmlAttributes: new { @class = "form-control" })*@
+
+                @Html.DropDownList("Id", (SelectList)ViewBag.CutAssignID, htmlAttributes: new { @class = "form-control" })
+                                
+               
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+           
+          <input id="btnSubmit" type="submit" value="Sign" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

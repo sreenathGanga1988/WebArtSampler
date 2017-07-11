@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+   
+    
+}
+
+<h2>Index</h2>
+<div>
+   
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Create Atc/Ref</h2>
+            <p>
+                Merchandisers can create Ref/Atc etc. which will be used in creating Cutting Ticket
+            </p>
+            <p><a class="btn btn-default" href="@Url.Action("Index", "PatterrefMasters")">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Create Style</h2>
+            <p>    Merchandisers can create Style etc. which will be used in creating Cutting Ticket</p>
+            <p><a class="btn btn-default" href="@Url.Action("Index", "PatternStyles")">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Create Fabric</h2>
+            <p>erchandisers can create Fabric if not already present etc. which will be used in creating Cutting Ticket</p>
+            <p><a class="btn btn-default" href="@Url.Action("Index", "SamplingFabricMasters")">Learn more &raquo;</a></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Create New Cutting Ticket</h2>
+            <p>
+                Merchandisers can create new  ShowCutreqStatus.
+            </p>
+            <p><a class="btn btn-default" href="@Url.Action("ShowCutreqStatus", "SampCutReqMasters")">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Receive Samples</h2>
+            <p> Receive the Samples Delivered from Sampling   </p>
+            <p><a class="btn btn-default" href="@Url.Action("ShowPendingDeliverytoAccept", "Merchandiser")">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Update Approval</h2>
+            <p> </p>
+            <p><a class="btn btn-default" >Learn more &raquo;</a></p>
+        </div>
+    </div>
+  <h3>
+      
+  </h3>
+
+
+ 
+</div>
+

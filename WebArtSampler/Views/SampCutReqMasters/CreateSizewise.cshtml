@@ -1,0 +1,137 @@
+﻿@model WebArtSampler.Models.ViewSamCutReqModelcs
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>SampCutReqMaster</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.sampCutReqMasterdet.ReqNum, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sampCutReqMasterdet.ReqNum, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.DefaultDescription } })
+                @Html.ValidationMessageFor(model => model.sampCutReqMasterdet.ReqNum, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sampCutReqMasterdet.Fabric, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Fabric, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownList("Fabric", null, htmlAttributes: new { @class = "chosen-select form-control" })
+                @Html.ValidationMessageFor(model => model.sampCutReqMasterdet.Fabric, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sampCutReqMasterdet.BuyerID, "Buyer", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("BuyerID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.sampCutReqMasterdet.BuyerID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sampCutReqMasterdet.PatternRefID, "Atc/Ref", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("PatternRefID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.sampCutReqMasterdet.PatternRefID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sampCutReqMasterdet.PatternStyleID, "Style", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("PatternStyleID", null, htmlAttributes: new { @class = "chosen-select form-control" })
+                @Html.ValidationMessageFor(model => model.sampCutReqMasterdet.PatternStyleID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sampCutReqMasterdet.SampleTypeID, "Sample Type", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SampleTypeID", null, htmlAttributes: new { @class = "chosen-select form-control" })
+                @Html.ValidationMessageFor(model => model.sampCutReqMasterdet.SampleTypeID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sampCutReqMasterdet.SampleRequiredDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sampCutReqMasterdet.SampleRequiredDate, new { htmlAttributes = new { @class = "datepicker form-control" } })
+
+
+                @Html.ValidationMessageFor(model => model.sampCutReqMasterdet.SampleRequiredDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.sampCutReqMasterdet.SizeDetail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sampCutReqMasterdet.SizeDetail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.sampCutReqMasterdet.SizeDetail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sampCutReqMasterdet.Qty, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sampCutReqMasterdet.Qty, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.sampCutReqMasterdet.Qty, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sampCutReqMasterdet.Remark, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sampCutReqMasterdet.Remark, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.sampCutReqMasterdet.Remark, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sampCutReqMasterdet.IsTeckPack, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sampCutReqMasterdet.IsTeckPack, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.sampCutReqMasterdet.IsTeckPack, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sampCutReqMasterdet.AddedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sampCutReqMasterdet.AddedDate, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Now.ToString(" dd/MMMM/yyyy HH:mm") } })
+
+
+                @Html.ValidationMessageFor(model => model.sampCutReqMasterdet.AddedDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sampCutReqMasterdet.AddedBy, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sampCutReqMasterdet.AddedBy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.sampCutReqMasterdet.AddedBy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

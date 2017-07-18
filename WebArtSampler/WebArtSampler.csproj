@@ -133,6 +133,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\ApprovalSample\ApprovalSampleAreaRegistration.cs" />
     <Compile Include="Areas\Cutting\Controllers\CuttingController.cs" />
+    <Compile Include="Areas\Cutting\Controllers\IPOController.cs" />
     <Compile Include="Areas\Cutting\Controllers\SewingController.cs" />
     <Compile Include="Areas\Cutting\CuttingAreaRegistration.cs" />
     <Compile Include="Areas\Cutting\Controllers\DeliveryController.cs" />
@@ -447,6 +448,7 @@
     <Folder Include="Areas\ApprovalSample\Controllers\" />
     <Folder Include="Areas\ApprovalSample\Models\" />
     <Folder Include="Areas\ApprovalSample\Views\Shared\" />
+    <Folder Include="Areas\Cutting\Views\IPO\" />
     <Folder Include="Areas\Cutting\Views\Shared\" />
     <Folder Include="Areas\Planning\Views\Shared\" />
     <Folder Include="Views\ReportController\" />

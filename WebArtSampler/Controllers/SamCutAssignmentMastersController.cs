@@ -112,6 +112,7 @@ namespace WebArtSampler.Controllers
             {
                 samCutAssignmentMaster.SignedBYMaster = false;
                 samCutAssignmentMaster.CompletedQty = 0;
+                samCutAssignmentMaster.ReceivedDate = DateTime.Now;
                 db.SamCutAssignmentMasters.Add(samCutAssignmentMaster);
 
 

@@ -33,6 +33,16 @@ namespace WebArtSampler.Controllers
         // GET: SampCutReqMasters
         public ActionResult ShowCutreqStatus()
         {
+
+            try
+            {
+                ViewBag.SuccessMessage = TempData["shortMessage"].ToString();
+            }
+            catch (Exception)
+            {
+
+
+            }
             var sampCutReqMasters = db.SampCutReqMasters.Include(s => s.BuyerMaster).Include(s => s.PatternStyle).Include(s => s.PatterRefMaster).Include(s => s.SampleType);
 
 
@@ -264,7 +274,7 @@ namespace WebArtSampler.Controllers
         // GET: SampCutReqMasters/Create
         public ActionResult Create()
         {
-            ViewBag.DefaultDescription = getAutomaticnumber();
+            ViewBag.DefaultDescription = "TBA";
             ViewBag.addeddate = DateTime.Now.ToString ();
             
             //ViewBag.BuyerID = new SelectList(db.BuyerMasters, "BuyerID", "BuyerName");
@@ -284,11 +294,22 @@ namespace WebArtSampler.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "SampCutreqID,ReqNum,Fabric,StyleDescription,BuyerID,PatternRefID,PatternStyleID,SampleTypeID,SampleRequiredDate,AddedDate,AddedBy,SizeDetail,Qty,IsTeckPack, Size1, Size2, Size3, Size4, Size5, Size6, Qty1, Qty2, Qty3, Qty4, Qty5, Qty6")] SampCutReqMaster sampCutReqMaster)
-        {
+        {     
             if (ModelState.IsValid)
             {
-                if (sampCutReqMaster.ReqNum != "")
+                if (sampCutReqMaster.ReqNum != ""&& sampCutReqMaster.ReqNum!=null)
                 {
+
+                    if (db.SampCutReqMasters.Any(o => o.ReqNum == sampCutReqMaster.ReqNum))
+                    {
+                        sampCutReqMaster.ReqNum = "";
+                    }
+                    else
+                    {
+
+                    }
+
+
                     sampCutReqMaster.IsReceived = "N";
                     sampCutReqMaster.Size1SewQty = 0;
                     sampCutReqMaster.Size2SewQty = 0;
@@ -303,10 +324,18 @@ namespace WebArtSampler.Controllers
                     sampCutReqMaster.Size4CutQty = 0;
                     sampCutReqMaster.Size5CutQty = 0;
                     sampCutReqMaster.Size6CutQty = 0;
-
+                    sampCutReqMaster.AddedDate = DateTime.Now;
                     db.SampCutReqMasters.Add(sampCutReqMaster);
                     db.SaveChanges();
-                    return RedirectToAction("ShowCutreqStatus");
+
+                    if (sampCutReqMaster.ReqNum=="" || sampCutReqMaster.ReqNum=="TBA")
+                    {
+                        sampCutReqMaster.ReqNum= "SR" + ((int.Parse(sampCutReqMaster.SampCutreqID.ToString()) ) + 1000).ToString();
+                        db.SaveChanges();
+                    }
+
+                    TempData["shortMessage"] = "Cutting Ticket#" + sampCutReqMaster.ReqNum.ToString() + "Created Successfully";
+                        return RedirectToAction("ShowCutreqStatus");
                 }
 
             }
@@ -369,6 +398,7 @@ namespace WebArtSampler.Controllers
 
         public void Feildsnonchangable(SampCutReqMaster sampCutReqMaster)
         {
+         
             db.Entry(sampCutReqMaster).Property(x => x.Size1CutQty).IsModified = false;
             db.Entry(sampCutReqMaster).Property(x => x.Size1SewQty).IsModified = false;
             db.Entry(sampCutReqMaster).Property(x => x.Size2CutQty).IsModified = false;
@@ -420,7 +450,10 @@ namespace WebArtSampler.Controllers
             Decimal count = db.SampCutReqMasters.Max(p => p.SampCutreqID);
             atcnum = "SR" + ((int.Parse(count.ToString())+1) + 1000).ToString();
 
-
+            if (db.SampCutReqMasters.Any(o => o.ReqNum == atcnum))
+            {
+                atcnum = "TBA";
+            }
             return atcnum;
         }
         protected override void Dispose(bool disposing)

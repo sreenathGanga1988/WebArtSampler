@@ -270,6 +270,10 @@ namespace WebArtSampler.Reports
 
                     }
 
+
+
+
+
                 }
 
 
@@ -287,7 +291,8 @@ namespace WebArtSampler.Reports
             }
             else
             {
-                this.ReportViewer1.LocalReport.ReportPath = @"Reports\RDLC\SampCutreqReportPending.rdlc";
+              //  this.ReportViewer1.LocalReport.ReportPath = @"Reports\RDLC\Report1.rdlc";
+             this.ReportViewer1.LocalReport.ReportPath = @"Reports\RDLC\SampCutreqReportPending.rdlc";
             }
             ReportParameter Heading = new ReportParameter("Heading", reporthead);
             ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { Heading });

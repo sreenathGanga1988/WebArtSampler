@@ -112,7 +112,8 @@ namespace WebArtSampler.Controllers
             {
                 samCutAssignmentMaster.SignedBYMaster = false;
                 samCutAssignmentMaster.CompletedQty = 0;
-                samCutAssignmentMaster.ReceivedDate = DateTime.Now;
+                samCutAssignmentMaster.IsPatternCompleted = "N";
+                // samCutAssignmentMaster.ReceivedDate = DateTime.Now;
                 db.SamCutAssignmentMasters.Add(samCutAssignmentMaster);
 
 
@@ -364,6 +365,7 @@ smpasg in db.SamCutAssignmentMasters on sampmstr.SampCutreqID equals smpasg.Samp
             foreach (var element in q)
             {
                 element.PatternCompletedDate = DateTime.Parse (Fromdate);
+                element.IsPatternCompleted = "Y";
                
 
             }

@@ -74,6 +74,7 @@
           <Property Name="SamplingStatus_PK" Type="numeric" Precision="18" Scale="0" />
           <Property Name="CompletedQty" Type="numeric" Precision="18" Scale="0" />
           <Property Name="PendingReason" Type="nvarchar(max)" />
+          <Property Name="IsPatternCompleted" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="SamCutPlanPriority">
           <Key>
@@ -260,6 +261,7 @@ warning 6002: The table/view 'Art.dbo.SamplingView' does not have a primary key 
           <Property Name="Expr1" Type="nvarchar" MaxLength="50" />
           <Property Name="IsTeckPack" Type="bit" Nullable="false" />
           <Property Name="IsReceived" Type="nchar" MaxLength="10" />
+          <Property Name="IsPatternCompleted" Type="nchar" MaxLength="10" />
         </EntityType>
         <Association Name="FK_SamCutAssignmentMaster_PatternMaster">
           <End Role="PatternMaster" Type="Self.PatternMaster" Multiplicity="0..1" />
@@ -451,7 +453,8 @@ warning 6002: The table/view 'Art.dbo.SamplingView' does not have a primary key 
     [SamplingView].[Qty] AS [Qty], 
     [SamplingView].[Expr1] AS [Expr1], 
     [SamplingView].[IsTeckPack] AS [IsTeckPack], 
-    [SamplingView].[IsReceived] AS [IsReceived]
+    [SamplingView].[IsReceived] AS [IsReceived], 
+    [SamplingView].[IsPatternCompleted] AS [IsPatternCompleted]
     FROM [dbo].[SamplingView] AS [SamplingView]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_SamCutAssignmentMaster_PatternMaster" Association="Self.FK_SamCutAssignmentMaster_PatternMaster">
@@ -662,6 +665,7 @@ warning 6002: The table/view 'Art.dbo.SamplingView' does not have a primary key 
           <NavigationProperty Name="SamCutPlanPriorities" Relationship="ArtModel.FK_SamCutPlanPriority_SamCutAssignmentMaster" FromRole="SamCutAssignmentMaster" ToRole="SamCutPlanPriority" />
           <NavigationProperty Name="SamSewingPriorities" Relationship="ArtModel.FK_SamSewingPriority_SamCutAssignmentMaster" FromRole="SamCutAssignmentMaster" ToRole="SamSewingPriority" />
           <NavigationProperty Name="SampCutReqMaster" Relationship="ArtModel.FK_SamCutAssignmentMaster_SampCutReqMaster" FromRole="SamCutAssignmentMaster" ToRole="SampCutReqMaster" />
+          <Property Name="IsPatternCompleted" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <Association Name="FK_SamCutAssignmentMaster_PatternMaster">
           <End Type="ArtModel.PatternMaster" Role="PatternMaster" Multiplicity="0..1" />
@@ -726,6 +730,7 @@ warning 6002: The table/view 'Art.dbo.SamplingView' does not have a primary key 
           <Property Name="Expr1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsTeckPack" Type="Boolean" Nullable="false" />
           <Property Name="IsReceived" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="IsPatternCompleted" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="SamCutPlanPriority">
           <Key>
@@ -1069,6 +1074,7 @@ warning 6002: The table/view 'Art.dbo.SamplingView' does not have a primary key 
           <EntitySetMapping Name="SamCutAssignmentMasters">
             <EntityTypeMapping TypeName="ArtModel.SamCutAssignmentMaster">
               <MappingFragment StoreEntitySet="SamCutAssignmentMaster">
+                <ScalarProperty Name="IsPatternCompleted" ColumnName="IsPatternCompleted" />
                 <ScalarProperty Name="PendingReason" ColumnName="PendingReason" />
                 <ScalarProperty Name="CompletedQty" ColumnName="CompletedQty" />
                 <ScalarProperty Name="SamplingStatus_PK" ColumnName="SamplingStatus_PK" />
@@ -1100,6 +1106,7 @@ warning 6002: The table/view 'Art.dbo.SamplingView' does not have a primary key 
           <EntitySetMapping Name="SamplingViews">
             <EntityTypeMapping TypeName="ArtModel.SamplingView">
               <MappingFragment StoreEntitySet="SamplingView">
+                <ScalarProperty Name="IsPatternCompleted" ColumnName="IsPatternCompleted" />
                 <ScalarProperty Name="IsReceived" ColumnName="IsReceived" />
                 <ScalarProperty Name="IsTeckPack" ColumnName="IsTeckPack" />
                 <ScalarProperty Name="Expr1" ColumnName="Expr1" />

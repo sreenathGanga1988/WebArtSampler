@@ -37,6 +37,7 @@ namespace WebArtSampler.Models
         public Nullable<decimal> SamplingStatus_PK { get; set; }
         public Nullable<decimal> CompletedQty { get; set; }
         public string PendingReason { get; set; }
+        public string IsPatternCompleted { get; set; }
     
         public virtual PatternMaster PatternMaster { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

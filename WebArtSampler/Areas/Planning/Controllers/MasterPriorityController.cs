@@ -29,7 +29,8 @@ namespace WebArtSampler.Areas.Planning.Controllers
                     join
 smpasg in db.SamCutAssignmentMasters on sampmstr.SampCutreqID equals smpasg.SampCutreqID
                     join patternrefmaster in db.PatterRefMasters on sampmstr.PatternRefID equals patternrefmaster.PatternRefID
-                    where sampmstr.IsReceived == "Y" && smpasg.PatternCompletedDate == null
+                    where sampmstr.IsReceived == "Y" && smpasg.PatternCompletedDate == null &&
+                   sampmstr.MarkCompleted == null 
                     select new
                     {
                         smpasg.CutAssignID,
@@ -69,7 +70,7 @@ smpasg in db.SamCutAssignmentMasters on sampmstr.SampCutreqID equals smpasg.Samp
 
 
 
-
+                rsgmp.SignedDate = element.SignedDate;
 
                 rsgmp.SampleType = element.SampleType1;
 
@@ -78,6 +79,9 @@ smpasg in db.SamCutAssignmentMasters on sampmstr.SampCutreqID equals smpasg.Samp
                 rsgmp.PaternMasterName = element.PaternMasterName;
 
                 rsgmp.PatternReqDate = element.PatternReqDate;
+
+                rsgmp.AddedDate = element.AddedDate;
+                rsgmp.ReceivedDate = element.ReceivedDate;
 
                 rsgmp.SignedBYMaster = element.SignedBYMaster;
                 rsgmp.AddedBy = element.AddedBy;

@@ -134,8 +134,12 @@
                 <th>
                     @Html.DisplayNameFor(model => model.MarkedCompletedBY)
                 </th>
-                <th></th>
-            </tr>
+                <th>  @Html.DisplayNameFor(model => model.IsPatternCompleted)</th>
+                <th>  @Html.DisplayNameFor(model => model.PatternCompletedDate)</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaternMasterName)
+                </th>
+</tr>
 
             @foreach (var item in Model) {
     <tr>
@@ -188,7 +192,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.MarkedCompletedBY)
         </td>
-
+        <td>
+            @Html.DisplayFor(modelItem => item.IsPatternCompleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatternCompletedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaternMasterName)
+        </td>
 
     </tr>
 }

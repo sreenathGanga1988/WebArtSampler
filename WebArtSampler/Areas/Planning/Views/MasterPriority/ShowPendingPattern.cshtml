@@ -93,10 +93,7 @@
             Status
 
         </th>
-        <td>
-            Qty
-
-        </td>
+       
         <td>
             Final Remark
 
@@ -110,7 +107,7 @@
                 <td>
 
 
-                   @i;
+                   @i
                 </td>
 
                 <td>
@@ -140,21 +137,26 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.PatternReqDate)
                 </td>
-                <th>
+                <td>
                     @Html.DisplayFor(modelItem => item.ReceivedDate)
 
 
-                </th>
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.AddedDate)
 
 
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.AddedBy)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.PaternMasterName)
 
 
                 </td>
+              
+
                 <td>
                     @Html.DisplayFor(modelItem => item.SignedDate)
 
@@ -162,10 +164,7 @@
                 </td>
              
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.AddedBy)
-                </td>
-
+               
 
                 <td>
                     @Html.DisplayFor(modelItem => item.Remark)
@@ -173,9 +172,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Expr1)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Qty)
-                </td>
+             
                 <td>
                    
 

@@ -45,5 +45,6 @@ namespace WebArtSampler.Models
         public string Expr1 { get; set; }
         public bool IsTeckPack { get; set; }
         public string IsReceived { get; set; }
+        public string IsPatternCompleted { get; set; }
     }
 }
